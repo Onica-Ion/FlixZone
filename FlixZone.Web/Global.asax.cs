@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
+using System.Web.Optimization;
 
 namespace FlixZone.Web
 {
@@ -16,6 +17,8 @@ namespace FlixZone.Web
             // Code that runs on application startup
            AreaRegistration.RegisterAllAreas();
            RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+           BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
     }
 }
