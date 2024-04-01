@@ -12,17 +12,28 @@
 
      <link rel="shortcut icon" href="~/Content/themes/base/images/favicon.ico">
 
-     @*<link rel="stylesheet" href="~/Content/css/bootstrap.min.css" type="text/css">*@
+     <!-- Google Font -->
+     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"rel="stylesheet">
+
+
      @Styles.Render("~/Content/css/bootstrap.min.css")
 
-     @*<link rel="stylesheet" type="text/css" href="~/Content/css/materialdesignicons.min.css" />*@
-     @Styles.Render("~/Content/css/materialdesignicons.min.css")
+     @Styles.Render("~/Content/css/font-awesome.min.css")
 
-     @*<link rel="stylesheet" type="text/css" href="~/Content/css/pe-icon-7-stroke.css" />*@
-     @Styles.Render("~/Content/css/pe-icon-7-stroke.css")
+     @Styles.Render("~/Content/css/elegant-icons.css")
 
-     @*<link rel="stylesheet" type="text/css" href="~/Content/css/style.css" />*@
+     @Styles.Render("~/Content/css/plyr.css")
+
+     @Styles.Render("~/Content/css/nice-select.css")
+
+     @Styles.Render("~/Content/css/owl.carousel.min.css")
+
+     @Styles.Render("~/Content/css/slicknav.min.css")
+
      @Styles.Render("~/Content/css/style.css")
+
+
 </head>
 
 <body>
@@ -41,17 +52,23 @@
                @Html.Partial("_Footer")
           </section>
 
-          <!-- javascript -->
-          @Scripts.Render("~/Scripts/js/jquery.min.js")
-          @Scripts.Render("~/Scripts/js/bootstrap.bundle.min.js")
-          @Scripts.Render("~/Scripts/js/jquery.easing.min.js")
-          @Scripts.Render("~/Scripts/js/scrollspy.min.js")
+          <!-- Js Plugins -->
+          @Scripts.Render("~/Scripts/js/jquery-3.3.1.min.js")
 
-          <!-- counter js -->
-          @Scripts.Render("~/Scripts/js/counter.init.js")
+          @Scripts.Render("~/Scripts/js/bootstrap.min.js")
 
-          <!-- custom js -->
-          @Scripts.Render("~/Scripts/js/app.js")
+          @Scripts.Render("~/Scripts/js/player.js")
+
+          @Scripts.Render("~/Scripts/js/jquery.nice-select.min.js")
+
+          @Scripts.Render("~/Scripts/js/mixitup.min.js")
+
+          @Scripts.Render("~/Scripts/js/jquery.slicknav.js")
+
+          @Scripts.Render("~/Scripts/js/owl.carousel.min.js")
+
+          @Scripts.Render("~/Scripts/js/main.js")
+
      </div>
 </body>
 </html>
