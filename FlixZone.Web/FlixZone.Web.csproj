@@ -154,6 +154,9 @@
     <Content Include="Content\img\blog\details\comment-2.png" />
     <Content Include="Content\img\blog\details\comment-3.png" />
     <Content Include="Content\img\hero\hero-1.jpg" />
+    <Content Include="Content\img\hero\SoloLeveling.jpg" />
+    <Content Include="Content\img\hero\the_unwanted_undead_aventurer.jpg" />
+    <Content Include="Content\img\hero\villainess-level-99.jpg" />
     <Content Include="Content\img\live\live-1.jpg" />
     <Content Include="Content\img\live\live-2.jpg" />
     <Content Include="Content\img\live\live-3.jpg" />
@@ -236,9 +239,9 @@
     <Content Include="Scripts\jquery-3.7.1.slim.min.js" />
     <Content Include="Scripts\jquery-3.7.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.7.1.min.map" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.13.2.js" />
     <Content Include="Scripts\jquery-ui-1.13.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\js\bootstrap.min.js" />
@@ -266,7 +269,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AnimeList.cs" />
-    <Compile Include="Models\AnimePack.cs" />
+    <Compile Include="Models\AnimeProduct.cs" />
+    <Compile Include="Models\CombinedModel.cs" />
+    <Compile Include="Models\LiveList.cs" />
+    <Compile Include="Models\PopularList.cs" />
+    <Compile Include="Models\RecentList.cs" />
+    <Compile Include="Models\TrendingList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
