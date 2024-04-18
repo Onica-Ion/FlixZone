@@ -7,11 +7,11 @@ namespace FlixZone.Web.Models
 {
      public class AnimeList
      {
-          public List<AnimeProduct> list1;
+          public List<AnimeProduct> list;
 
         public AnimeList()
         {
-            list1 = new List<AnimeProduct>();
+            list = new List<AnimeProduct>();
         }
     }
 }

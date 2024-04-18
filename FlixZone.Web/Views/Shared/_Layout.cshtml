@@ -16,8 +16,11 @@
      <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
      <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"rel="stylesheet">
 
+     
+     @Styles.Render("~/bundles/boostrap/css")
 
-     @Styles.Render("~/Content/css/bootstrap.min.css")
+
+     @*@Styles.Render("~/Content/css/bootstrap.min.css")
 
      @Styles.Render("~/Content/css/font-awesome.min.css")
 
@@ -31,7 +34,7 @@
 
      @Styles.Render("~/Content/css/slicknav.min.css")
 
-     @Styles.Render("~/Content/css/style.css")
+     @Styles.Render("~/Content/css/style.css")*@
 
 
 </head>
@@ -63,7 +66,12 @@
           </div>
           <!-- Search model end -->
           <!-- Js Plugins -->
-          @Scripts.Render("~/Scripts/js/jquery-3.3.1.min.js")
+
+
+          @Scripts.Render("~/bundles/boostrap/js")
+
+
+          @*@Scripts.Render("~/Scripts/js/jquery-3.3.1.min.js")
 
           @Scripts.Render("~/Scripts/js/bootstrap.min.js")
 
@@ -77,7 +85,7 @@
 
           @Scripts.Render("~/Scripts/js/owl.carousel.min.js")
 
-          @Scripts.Render("~/Scripts/js/main.js")
+          @Scripts.Render("~/Scripts/js/main.js")*@
 
      </div>
 </body>

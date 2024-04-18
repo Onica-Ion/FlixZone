@@ -268,13 +268,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AnimeList.cs" />
-    <Compile Include="Models\AnimeProduct.cs" />
-    <Compile Include="Models\CombinedModel.cs" />
-    <Compile Include="Models\LiveList.cs" />
-    <Compile Include="Models\PopularList.cs" />
-    <Compile Include="Models\RecentList.cs" />
-    <Compile Include="Models\TrendingList.cs" />
+    <Compile Include="Models\AnimeList\AnimeList.cs" />
+    <Compile Include="Models\AnimeList\AnimeProduct.cs" />
+    <Compile Include="Models\AnimeList\CombinedModel.cs" />
+    <Compile Include="Models\AnimeList\LiveList.cs" />
+    <Compile Include="Models\AnimeList\NewCommentList.cs" />
+    <Compile Include="Models\AnimeList\PopularList.cs" />
+    <Compile Include="Models\AnimeList\RecentList.cs" />
+    <Compile Include="Models\AnimeList\TopViewList.cs" />
+    <Compile Include="Models\AnimeList\TrendingList.cs" />
+    <Compile Include="Models\User\UserLogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -324,6 +327,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FlixZone.BusinessLogic\FlixZone.BusinessLogic.csproj">
+      <Project>{c94c6a2e-2a9a-47fe-920a-d72492d4e97f}</Project>
+      <Name>FlixZone.BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FlixZone.Domain\FlixZone.Domain.csproj">
+      <Project>{6c8287b3-90fb-4398-a46f-ce0361037617}</Project>
+      <Name>FlixZone.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

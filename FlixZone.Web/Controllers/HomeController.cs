@@ -12,41 +12,45 @@ namespace FlixZone.Web.Controllers
         // GET: Home
         public ActionResult Index()
         {
-               AnimeList list1 = new AnimeList();
-               TrendingList list2 = new TrendingList();
-               PopularList list3 = new PopularList();
-               RecentList list4 = new RecentList();
-               LiveList list5 = new LiveList();
-                AnimeProduct firstAnim = new AnimeProduct
-                {
+               AnimeList list = new AnimeList();
+               TrendingList trendingList = new TrendingList();
+               PopularList popularList = new PopularList();
+               RecentList recentList = new RecentList();
+               LiveList liveList = new LiveList();
+               TopViewList topViewList = new TopViewList();
+               NewCommentList newCommentList = new NewCommentList();
+
+               //SlideBar
+               AnimeProduct firstAnim = new AnimeProduct
+               {
                     ImageUrl= "Content/img/hero/the_unwanted_undead_aventurer.jpg",
                     Description= "Is a Japanese light novel series written by Yū Okano and illustrated by Jaian",
                     Name= "The Unwanted Undead Adventurer",
                     Genre= "Dark fantasy",
                };
-               list1.list1.Add(firstAnim);
+               list.list.Add(firstAnim);
 
-                AnimeProduct secondAnim = new AnimeProduct
-                {
+               AnimeProduct secondAnim = new AnimeProduct
+               {
                     ImageUrl = "Content/img/hero/SoloLeveling.jpg",
                     Description = "Is a South Korean web novel written by Chugong",
                     Name= "Solo Leveling",
                     Genre= "Action, fantasy"
                };
-               list1.list1.Add(secondAnim);
+               list.list.Add(secondAnim);
 
-                AnimeProduct thirdAnim = new AnimeProduct
-                {
+               AnimeProduct thirdAnim = new AnimeProduct
+               {
                     ImageUrl = "Content/img/hero/villainess-level-99.jpg",
                     Description = "Is a Japanese light novel series written by Satori Tanabata with illustrations by Tea",
                     Name= "Villainess Level 99",
                     Genre= "Fantasy, isekai"
                };
-               list1.list1.Add(thirdAnim);
+               list.list.Add(thirdAnim);
 
+               //TrendingList
                AnimeProduct firstTrending = new AnimeProduct
                {
-                    Class_Col= "col-lg-4 col-md-6 col-sm-6",
                     ImageUrl = "Content/img/hero/villainess-level-99.jpg",
                     Name= "Villainess Level 99",
                     Genre= "Fantasy, isekai",
@@ -54,11 +58,11 @@ namespace FlixZone.Web.Controllers
                     View_counter= 1000,
                     Ep="19 / 19"
                };
-               list2.list2.Add(firstTrending);
+               trendingList.list.Add(firstTrending);
 
+               //PopularList
                AnimeProduct firstPopular = new AnimeProduct
                {
-                    Class_Col= "col-lg-4 col-md-6 col-sm-6",
                     ImageUrl = "Content/img/hero/villainess-level-99.jpg",
                     Name= "Villainess Level 99",
                     Genre= "Fantasy, isekai",
@@ -66,11 +70,11 @@ namespace FlixZone.Web.Controllers
                     View_counter= 1000,
                     Ep="19 / 19"
                };
-               list3.list3.Add(firstPopular);
+               popularList.list.Add(firstPopular);
 
+               //RecentList
                AnimeProduct firstRecent = new AnimeProduct
                {
-                    Class_Col= "col-lg-4 col-md-6 col-sm-6",
                     ImageUrl = "Content/img/hero/villainess-level-99.jpg",
                     Name= "Villainess Level 99",
                     Genre= "Fantasy, isekai",
@@ -78,11 +82,11 @@ namespace FlixZone.Web.Controllers
                     View_counter= 1000,
                     Ep="19 / 19"
                };
-               list4.list4.Add(firstRecent);
+               recentList.list.Add(firstRecent);
 
+               //LiveList
                AnimeProduct firstLive = new AnimeProduct
                {
-                    Class_Col= "col-lg-4 col-md-6 col-sm-6",
                     ImageUrl = "Content/img/hero/villainess-level-99.jpg",
                     Name= "Villainess Level 99",
                     Genre= "Fantasy, isekai",
@@ -90,15 +94,67 @@ namespace FlixZone.Web.Controllers
                     View_counter= 1000,
                     Ep="19 / 19"
                };
-               list5.list5.Add(firstLive);
+               liveList.list.Add(firstLive);
+
+               //TopViewList
+               AnimeProduct firstTopView = new AnimeProduct
+               {
+                    ImageUrl = "Content/img/hero/villainess-level-99.jpg",
+                    Name= "Villainess Level 99",
+                    View_counter= 1000,
+                    Class_Col= "product__sidebar__view__item set-bg mix day years",//day,years top view
+                   Ep ="1 / 19"
+               };
+               topViewList.list.Add(firstTopView);
+
+               AnimeProduct secondTopView = new AnimeProduct
+               {
+                    ImageUrl = "Content/img/hero/villainess-level-99.jpg",
+                    Name= "Villainess Level 99",
+                    View_counter= 1000,
+                    Class_Col= "product__sidebar__view__item set-bg mix month week",//month,week top view
+                   Ep ="2 / 19"
+               };
+               topViewList.list.Add(secondTopView);
+
+               AnimeProduct thridTopView = new AnimeProduct
+               {
+                    ImageUrl = "Content/img/hero/villainess-level-99.jpg",
+                    Name= "Villainess Level 99",
+                    View_counter= 1000,
+                    Class_Col= "product__sidebar__view__item set-bg mix week years",//week,years top view
+                   Ep ="3 / 19"
+               };
+               topViewList.list.Add(thridTopView);
+            
+               AnimeProduct fourthTopView = new AnimeProduct
+               {
+                    ImageUrl = "Content/img/hero/villainess-level-99.jpg",
+                    Name= "Villainess Level 99",
+                    View_counter= 1000,
+                    Class_Col= "product__sidebar__view__item set-bg mix years month",//years,month top view
+                   Ep ="4 / 19"
+               };
+               topViewList.list.Add(fourthTopView);
+
+               //NewCommentList
+               AnimeProduct firstNewComm = new AnimeProduct
+               {
+                    ImageUrl = "Content/img/sidebar/comment-2.jpg",
+                    Name= "Shirogane Tamashii hen Kouhan sen",
+                    View_counter= 1000,
+               };
+               newCommentList.list.Add(firstNewComm);
 
                CombinedModel combinedModel = new CombinedModel
                {
-                AnimeList = list1,
-                TrendingList = list2,
-                PopularList = list3,
-                RecentList = list4,
-                LiveList = list5
+                AnimeList = list,
+                TrendingList = trendingList,
+                PopularList = popularList,
+                RecentList = recentList,
+                LiveList = liveList,
+                TopViewList = topViewList,
+                NewCommentList = newCommentList
                };   
 
             return View(combinedModel);

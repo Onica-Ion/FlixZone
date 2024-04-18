@@ -1,4 +1,6 @@
-﻿<!-- Breadcrumb Begin -->
+﻿@model FlixZone.Web.Models.CombinedModel
+
+<!-- Breadcrumb Begin -->
 <div class="breadcrumb-option">
      <div class="container">
           <div class="row">
@@ -351,94 +353,37 @@
                                    <li data-filter=".years">Years</li>
                               </ul>
                               <div class="filter__gallery">
-                                   <div class="product__sidebar__view__item set-bg mix day years"
-                                        data-setbg="Content/img/sidebar/tv-1.jpg">
-                                        <div class="ep">18 / ?</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                        <h5><a href="#">Boruto: Naruto next generations</a></h5>
-                                   </div>
-                                   <div class="product__sidebar__view__item set-bg mix month week"
-                                        data-setbg="Content/img/sidebar/tv-2.jpg">
-                                        <div class="ep">18 / ?</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                        <h5><a href="#">The Seven Deadly Sins: Wrath of the Gods</a></h5>
-                                   </div>
-                                   <div class="product__sidebar__view__item set-bg mix week years"
-                                        data-setbg="Content/img/sidebar/tv-3.jpg">
-                                        <div class="ep">18 / ?</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                        <h5><a href="#">Sword art online alicization war of underworld</a></h5>
-                                   </div>
-                                   <div class="product__sidebar__view__item set-bg mix years month"
-                                        data-setbg="Content/img/sidebar/tv-4.jpg">
-                                        <div class="ep">18 / ?</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                        <h5><a href="#">Fate/stay night: Heaven's Feel I. presage flower</a></h5>
-                                   </div>
-                                   <div class="product__sidebar__view__item set-bg mix day"
-                                        data-setbg="Content/img/sidebar/tv-5.jpg">
-                                        <div class="ep">18 / ?</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                        <h5><a href="#">Fate stay night unlimited blade works</a></h5>
-                                   </div>
+                                  @foreach (var list in Model.TopViewList.list)
+                                  {
+                                      <div class="@list.Class_Col"
+                                           data-setbg="@list.ImageUrl">
+                                          <div class="ep">@list.Ep</div>
+                                          <div class="view"><i class="fa fa-eye"></i> @list.View_counter</div>
+                                          <h5><a href="#">@list.Name</a></h5>
+                                      </div>
+                                  }
                               </div>
                          </div>
                          <div class="product__sidebar__comment">
-                              <div class="section-title">
-                                   <h5>New Comment</h5>
-                              </div>
-                              <div class="product__sidebar__comment__item">
-                                   <div class="product__sidebar__comment__item__pic">
-                                        <img src="~/Content/img/sidebar/comment-1.jpg" alt="">
-                                   </div>
-                                   <div class="product__sidebar__comment__item__text">
-                                        <ul>
+                             <div class="section-title">
+                                 <h5>New Comment</h5>
+                             </div>
+                             @foreach (var list in Model.NewCommentList.list)
+                             {
+                                 <div class="product__sidebar__comment__item">
+                                     <div class="product__sidebar__comment__item__pic">
+                                         <img src="@list.ImageUrl" alt="">
+                                     </div>
+                                     <div class="product__sidebar__comment__item__text">
+                                         <ul>
                                              <li>Active</li>
                                              <li>Movie</li>
-                                        </ul>
-                                        <h5><a href="#">The Seven Deadly Sins: Wrath of the Gods</a></h5>
-                                        <span><i class="fa fa-eye"></i> 19.141 Viewes</span>
-                                   </div>
-                              </div>
-                              <div class="product__sidebar__comment__item">
-                                   <div class="product__sidebar__comment__item__pic">
-                                        <img src="~/Content/img/sidebar/comment-2.jpg" alt="">
-                                   </div>
-                                   <div class="product__sidebar__comment__item__text">
-                                        <ul>
-                                             <li>Active</li>
-                                             <li>Movie</li>
-                                        </ul>
-                                        <h5><a href="#">Shirogane Tamashii hen Kouhan sen</a></h5>
-                                        <span><i class="fa fa-eye"></i> 19.141 Viewes</span>
-                                   </div>
-                              </div>
-                              <div class="product__sidebar__comment__item">
-                                   <div class="product__sidebar__comment__item__pic">
-                                        <img src="~/Content/img/sidebar/comment-3.jpg" alt="">
-                                   </div>
-                                   <div class="product__sidebar__comment__item__text">
-                                        <ul>
-                                             <li>Active</li>
-                                             <li>Movie</li>
-                                        </ul>
-                                        <h5><a href="#">Kizumonogatari III: Reiket su-hen</a></h5>
-                                        <span><i class="fa fa-eye"></i> 19.141 Viewes</span>
-                                   </div>
-                              </div>
-                              <div class="product__sidebar__comment__item">
-                                   <div class="product__sidebar__comment__item__pic">
-                                        <img src="~/Content/img/sidebar/comment-4.jpg" alt="">
-                                   </div>
-                                   <div class="product__sidebar__comment__item__text">
-                                        <ul>
-                                             <li>Active</li>
-                                             <li>Movie</li>
-                                        </ul>
-                                        <h5><a href="#">Monogatari Series: Second Season</a></h5>
-                                        <span><i class="fa fa-eye"></i> 19.141 Viewes</span>
-                                   </div>
-                              </div>
+                                         </ul>
+                                         <h5><a href="#">@list.Name</a></h5>
+                                         <span><i class="fa fa-eye"></i>@list.View_counter Viewes</span>
+                                     </div>
+                                 </div>
+                             }
                          </div>
                     </div>
                </div>

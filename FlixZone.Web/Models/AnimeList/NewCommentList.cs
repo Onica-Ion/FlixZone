@@ -5,13 +5,13 @@ using System.Web;
 
 namespace FlixZone.Web.Models
 {
-    public class PopularList
+    public class NewCommentList
     {
-        public List<AnimeProduct> list3;
+        public List<AnimeProduct> list;
 
-        public PopularList()
+        public NewCommentList()
         {
-            list3 = new List<AnimeProduct>();
+            list = new List<AnimeProduct>();
         }
     }
 }
