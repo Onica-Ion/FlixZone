@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace FlixZone.Web.Models.User
+namespace FlixZone.Web.Models
 {
     public class UserLogin
     {
         public string Credential { get; set; }
         public string Password { get; set; }
+        public string Name { get; set; }    
     }
 }

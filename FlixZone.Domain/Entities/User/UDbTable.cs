@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-using FlixZone.Domain.Enums;
+using FlixZone.Domain.Enum;
 
 namespace FlixZone.Domain.Entities.User
 {
@@ -16,7 +16,7 @@ namespace FlixZone.Domain.Entities.User
         public int Id { get; set; }
 
         [Required]
-        [Display(Name = "UserName")]
+        [Display(Name = "Username")]
         [StringLength(30, MinimumLength = 5, ErrorMessage = "Username cannot be longer than 30 characters.")]
         public string Username { get; set; }
 
@@ -34,7 +34,8 @@ namespace FlixZone.Domain.Entities.User
         public DateTime LastLogin { get; set; }
 
         [StringLength(30)]
-        public string LastIp { get; set; }
-        /*public URole Level { get; set; }*/
+        public string LasIp { get; set; }
+
+        public URole Level { get; set; }
     }
 }

@@ -3,19 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using FlixZone.BusinessLogic.Interface;
 using FlixZone.BusinessLogic;
-using FlixZone.BusinessLogic.Interfaces;
 using FlixZone.Domain.Entities.User;
-using FlixZone.Domain.Entities.User.Responses;
-using FlixZone.Web.Models.User;
+using AutoMapper;
+using FlixZone.Web.Models;
 
 namespace FlixZone.Web.Controllers
 {
     public class LoginController : Controller
     {
-
         private readonly ISession _session;
-
         public LoginController()
         {
             var bl = new BussinesLogic();
@@ -23,42 +21,71 @@ namespace FlixZone.Web.Controllers
         }
 
         // GET: Login
-        public ActionResult Index()
+        /*public ActionResult Index()
         {
             return View();
-        }
+        }*/
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Index(UserLogin login)
+        public ActionResult Index(UserLogin data)
         {
-            if (ModelState.IsValid)
+            /*if (ModelState.IsValid)
             {
-                ULoginData data = new ULoginData
-                {
-                    Credential = login.Credential,
-                    Password = login.Password,
-                    LoginIp = Request.UserHostAddress,
-                    LoginDateTime = DateTime.Now
-                };
+                Mapper.Initialize(cfg => cfg.CreateMap<UserLogin, ULoginData>());
+                var data = Mapper.Map<ULoginData>(login);
 
-                ULoginResp userResp = _session.UserLoginAcion(data);
-                ViewBag.LogSuccess = userResp.Status;
+                data.LoginIp = Request.UserHostAddress;
+                data.LoginDateTime = DateTime.Now;
 
-                if (userResp.Status)
+                var userLogin = _session.UserLogin(data);
+                if (userLogin.Status)
                 {
-                    //ADD COOKIE
+                    HttpCookie cookie = _session.GenCookie(login.Credential);
+                    ControllerContext.HttpContext.Response.Cookies.Add(cookie);
 
                     return RedirectToAction("Index", "Home");
                 }
                 else
                 {
-                    ModelState.AddModelError("", userResp.StatusMsg);
+                    ModelState.AddModelError("", userLogin.StatusMsg);
+                    return View();
+                }
+            }*/
+
+            if (ModelState.IsValid)
+            {
+                ULoginData uData = new ULoginData
+                {
+                    Credential = data.Credential,
+                    Password = data.Password,
+                    LoginIp = Request.UserHostAddress,
+                    LoginDateTime = DateTime.Now
+                };
+
+                ULoginResp resp = _session.UserLogin(uData);
+                ViewBag.LogSuccess = resp.Status;
+                if (resp.Status)
+                {
+                    //ADD COOKIE
+                    //coogie
+                    HttpCookie cookie = _session.GenCookie(uData.Credential);
+                    ControllerContext.HttpContext.Response.Cookies.Add(cookie);
+
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError("", resp.StatusMsg);
                     return View();
                 }
             }
-            return RedirectToAction("Index", "Home");
-        }
 
+            return View();
+        }
+        public ActionResult Index()
+        {
+            return View();
+        }
     }
 }

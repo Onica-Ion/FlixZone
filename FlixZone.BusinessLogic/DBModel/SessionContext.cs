@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace FlixZone.BusinessLogic.DBModel
 {
-    public class UserContext : DbContext
+    public class SessionContext : DbContext
     {
-        public UserContext() :
-            base("name=flixZone") // connectionstring name define in your web.config
+        public SessionContext() : base("name=flixZone")
         {
         }
-        public virtual DbSet<UDbTable> Users { get; set; }
+
+        public virtual DbSet<Session> Sessions { get; set; }
     }
 }

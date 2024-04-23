@@ -5,7 +5,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6C8287B3-90FB-4398-A46F-CE0361037617}</ProjectGuid>
+    <ProjectGuid>{59321AD1-7979-499B-A47D-19D46CC6ABE8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FlixZone.Domain</RootNamespace>
@@ -51,19 +51,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\User\Responses\ULoginResp.cs" />
+    <Compile Include="Entities\User\Session.cs" />
     <Compile Include="Entities\User\UDbTable.cs" />
     <Compile Include="Entities\User\ULoginData.cs" />
-    <Compile Include="Enums\URole.cs" />
+    <Compile Include="Entities\User\ULoginResp.cs" />
+    <Compile Include="Entities\User\UserMinimal.cs" />
+    <Compile Include="Enum\URole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FlixZone.Helpers\FlixZone.Helpers.csproj">
-      <Project>{fc336162-8499-4f0f-87fc-c63de9cc2b97}</Project>
+      <Project>{18799038-4e4d-4e3b-b5a8-e5dbe245328f}</Project>
       <Name>FlixZone.Helpers</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />

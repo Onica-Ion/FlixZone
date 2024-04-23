@@ -1,4 +1,5 @@
 ﻿using FlixZone.Web.Models;
+using FlixZone.Web.Extension;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +8,18 @@ using System.Web.Mvc;
 
 namespace FlixZone.Web.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         // GET: Home
         public ActionResult Index()
         {
+
+                SessionStatus();
+                if ((string)System.Web.HttpContext.Current.Session["LoginStatus"] != "login")
+                {
+                    return RedirectToAction("Index", "Login");
+                }
+
                AnimeList list = new AnimeList();
                TrendingList trendingList = new TrendingList();
                PopularList popularList = new PopularList();

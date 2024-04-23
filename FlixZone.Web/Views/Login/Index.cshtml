@@ -1,4 +1,6 @@
-﻿<!-- Normal Breadcrumb Begin -->
+﻿@model FlixZone.Web.Models.UserLogin
+
+<!-- Normal Breadcrumb Begin -->
 <section class="normal-breadcrumb set-bg" data-setbg="Content/img/normal-breadcrumb.jpg">
      <div class="container">
           <div class="row">
@@ -17,21 +19,40 @@
      <div class="container">
           <div class="row">
                <div class="col-lg-6">
-                    <div class="login__form">
-                         <h3>Login</h3>
-                         <form action="#">
-                              <div class="input__item">
-                                   <input type="text" placeholder="Email address">
-                                   <span class="icon_mail"></span>
-                              </div>
-                              <div class="input__item">
-                                   <input type="text" placeholder="Password">
-                                   <span class="icon_lock"></span>
-                              </div>
-                              <button type="submit" class="site-btn">Login Now</button>
-                         </form>
-                         <a href="#" class="forget_pass">Forgot Your Password?</a>
-                    </div>
+                   <div class="login__form">
+                       <h3>Login</h3>
+                       @using (Html.BeginForm())  // Form tag generation and CSRF protection
+                       {
+                           <div class="input__item">
+                               @Html.ValidationMessageFor(UserLogin => UserLogin.Credential, "", new { @class = "text-danger" })
+                               <input type="text" name="Credential" id="Credential" class="form-control" placeholder="Email address" required>
+                               <span class="icon_mail"></span>
+                           </div>
+                           @*<div class="input__item">
+                               @Html.ValidationMessageFor(UserLogin => UserLogin.Name, "", new { @class = "text-danger" })
+                               <input type="text" name="Name" id="Name" class="form-control" placeholder="Your Name" required>
+                               <span class="icon_profile"></span>
+                           </div>*@
+                           <div class="input__item">
+                               @Html.ValidationMessageFor(UserLogin => UserLogin.Password, "", new { @class = "text-danger" })
+                               @Html.PasswordFor(m => m.Password, new { @placeholder = "Password", @required = "required" })  <span class="icon_lock"></span>
+                           </div>
+                           @Html.AntiForgeryToken() <button type="submit" class="site-btn">Login Now</button>
+                       }
+
+                       @*<form action="#">
+             <div class="input__item">
+                  <input type="text" placeholder="Email address">
+                  <span class="icon_mail"></span>
+             </div>
+             <div class="input__item">
+                  <input type="text" placeholder="Password">
+                  <span class="icon_lock"></span>
+             </div>
+             <button type="submit" class="site-btn">Login Now</button>
+        </form>*@
+                       <a href="#" class="forget_pass">Forgot Your Password?</a>
+                   </div>
                </div>
                <div class="col-lg-6">
                     <div class="login__register">

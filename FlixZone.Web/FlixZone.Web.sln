@@ -5,11 +5,11 @@ VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlixZone.Web", "FlixZone.Web.csproj", "{5958010F-492D-4621-A7C3-68236EFDE4C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlixZone.BusinessLogic", "..\FlixZone.BusinessLogic\FlixZone.BusinessLogic.csproj", "{C94C6A2E-2A9A-47FE-920A-D72492D4E97F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlixZone.BusinessLogic", "..\FlixZone.BusinessLogic\FlixZone.BusinessLogic.csproj", "{8D8E50AE-31CC-4B3D-9CD3-D90B591CBBA1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlixZone.Domain", "..\FlixZone.Domain\FlixZone.Domain.csproj", "{6C8287B3-90FB-4398-A46F-CE0361037617}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlixZone.Domain", "..\FlixZone.Domain\FlixZone.Domain.csproj", "{59321AD1-7979-499B-A47D-19D46CC6ABE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlixZone.Helpers", "..\FlixZone.Helpers\FlixZone.Helpers.csproj", "{FC336162-8499-4F0F-87FC-C63DE9CC2B97}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlixZone.Helpers", "..\FlixZone.Helpers\FlixZone.Helpers.csproj", "{18799038-4E4D-4E3B-B5A8-E5DBE245328F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,18 +21,18 @@ Global
 		{5958010F-492D-4621-A7C3-68236EFDE4C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5958010F-492D-4621-A7C3-68236EFDE4C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5958010F-492D-4621-A7C3-68236EFDE4C5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C94C6A2E-2A9A-47FE-920A-D72492D4E97F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C94C6A2E-2A9A-47FE-920A-D72492D4E97F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C94C6A2E-2A9A-47FE-920A-D72492D4E97F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C94C6A2E-2A9A-47FE-920A-D72492D4E97F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6C8287B3-90FB-4398-A46F-CE0361037617}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6C8287B3-90FB-4398-A46F-CE0361037617}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6C8287B3-90FB-4398-A46F-CE0361037617}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6C8287B3-90FB-4398-A46F-CE0361037617}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FC336162-8499-4F0F-87FC-C63DE9CC2B97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FC336162-8499-4F0F-87FC-C63DE9CC2B97}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FC336162-8499-4F0F-87FC-C63DE9CC2B97}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FC336162-8499-4F0F-87FC-C63DE9CC2B97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D8E50AE-31CC-4B3D-9CD3-D90B591CBBA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D8E50AE-31CC-4B3D-9CD3-D90B591CBBA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D8E50AE-31CC-4B3D-9CD3-D90B591CBBA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D8E50AE-31CC-4B3D-9CD3-D90B591CBBA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59321AD1-7979-499B-A47D-19D46CC6ABE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59321AD1-7979-499B-A47D-19D46CC6ABE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59321AD1-7979-499B-A47D-19D46CC6ABE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59321AD1-7979-499B-A47D-19D46CC6ABE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18799038-4E4D-4E3B-B5A8-E5DBE245328F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18799038-4E4D-4E3B-B5A8-E5DBE245328F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18799038-4E4D-4E3B-B5A8-E5DBE245328F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18799038-4E4D-4E3B-B5A8-E5DBE245328F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

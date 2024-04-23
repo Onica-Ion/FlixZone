@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FlixZone.Domain.Enums
+namespace FlixZone.Domain.Enum
 {
-    public class URole
+    public enum URole
     {
+        User,
+        Moderator,
+        Admin
     }
 }
