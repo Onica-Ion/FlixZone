@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace FlixZone.Web.Controllers
+namespace FlixZone.Web.Controllers.NavControllers
 {
     public class BlogController : Controller
     {

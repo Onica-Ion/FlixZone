@@ -5,11 +5,10 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FlixZone.Domain.Enum;
 
 namespace FlixZone.Domain.Entities.User
 {
-    public class UDbTable
+    public class UserLogin
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

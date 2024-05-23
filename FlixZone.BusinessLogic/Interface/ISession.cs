@@ -1,4 +1,5 @@
-﻿using FlixZone.Domain.Entities.User;
+﻿using FlixZone.Domain.Entities.Responce;
+using FlixZone.Domain.Entities.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,4 +1,5 @@
 ﻿using FlixZone.Domain.Entities.User;
+using FlixZone.Domain.Entities.User.DBModel;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -6,15 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FlixZone.BusinessLogic.DBModel
+namespace FlixZone.BusinessLogic.DBContext
 {
-    public class MainContext : DbContext
+    public class FatherContext : DbContext
     {
-        public MainContext() : base("name=flixZone")
-        {   
+        public FatherContext() : base("name=flixZone")
+        {
         }
 
         public virtual DbSet<Session> Sessions { get; set; }
-        public virtual DbSet<UDbTable> Users { get; set; }
+        public virtual DbSet<UserLogin> Users { get; set; }
     }
 }

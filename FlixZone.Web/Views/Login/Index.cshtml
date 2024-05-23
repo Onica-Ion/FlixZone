@@ -1,4 +1,4 @@
-﻿@model FlixZone.Web.Models.UserLogin
+﻿@model FlixZone.Web.Models.ULogin
 
 <!-- Normal Breadcrumb Begin -->
 <section class="normal-breadcrumb set-bg" data-setbg="Content/img/normal-breadcrumb.jpg">
@@ -18,46 +18,44 @@
 <section class="login spad">
      <div class="container">
           <div class="row">
-               <div class="col-lg-6">
-                   <div class="login__form">
-                       <h3>Login</h3>
-                       @using (Html.BeginForm())  // Form tag generation and CSRF protection
-                       {
-                           <div class="input__item">
-                               @Html.ValidationMessageFor(UserLogin => UserLogin.Credential, "", new { @class = "text-danger" })
-                               <input type="text" name="Credential" id="Credential" class="form-control" placeholder="Email address" required>
-                               <span class="icon_mail"></span>
-                           </div>
-                           @*<div class="input__item">
-                               @Html.ValidationMessageFor(UserLogin => UserLogin.Name, "", new { @class = "text-danger" })
-                               <input type="text" name="Name" id="Name" class="form-control" placeholder="Your Name" required>
-                               <span class="icon_profile"></span>
-                           </div>*@
-                           <div class="input__item">
-                               @Html.ValidationMessageFor(UserLogin => UserLogin.Password, "", new { @class = "text-danger" })
-                               @Html.PasswordFor(m => m.Password, new { @placeholder = "Password", @required = "required" })  <span class="icon_lock"></span>
-                           </div>
-                           @Html.AntiForgeryToken() <button type="submit" class="site-btn">Login Now</button>
-                       }
+              <div class="col-lg-6">
+                  <div class="login__form">
+                      <h3>Login</h3>
+                      @Html.ValidationSummary(true)
+                      @using (Html.BeginForm("Index", "Login", FormMethod.Post, new { @id = "LoginForm" }))
+                      {
+                          @Html.AntiForgeryToken()
+                          <div class="input__item">
+                              @Html.ValidationMessageFor(m => m.Credential, "", new { @class = "text-danger" })
+                              @Html.TextBoxFor(m => m.Credential, new
+                              {
+                                  placeholder = "example@gmail.com",
+                                  title = "Please enter your username",
+                                  @class = "form-control"
+                              })
+                              <span class="icon_mail"></span>
+                          </div>
+                          <div class="input__item">
+                              @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                              @Html.PasswordFor(m => m.Password, new
+                              {
+                                  @class = "form-control",
+                                  placeholder = "******",
+                                  title = "Please enter your password"
+                              })
+                              <span class="icon_lock"></span>
+                          </div>
+                          <button type="submit" class="site-btn">Login Now</button>
+                      }
+                      <a href="#" class="forget_pass">Forgot Your Password?</a>
+                  </div>
 
-                       @*<form action="#">
-             <div class="input__item">
-                  <input type="text" placeholder="Email address">
-                  <span class="icon_mail"></span>
-             </div>
-             <div class="input__item">
-                  <input type="text" placeholder="Password">
-                  <span class="icon_lock"></span>
-             </div>
-             <button type="submit" class="site-btn">Login Now</button>
-        </form>*@
-                       <a href="#" class="forget_pass">Forgot Your Password?</a>
-                   </div>
-               </div>
+
+              </div>
                <div class="col-lg-6">
                     <div class="login__register">
                          <h3>Dont’t Have An Account?</h3>
-                         <a class="primary-btn @(Url.RouteUrl(ViewContext.RouteData.Values) == "/sign_up" ? "active" : "")" href="/sign_up">Register Now</a>
+                         <a class="primary-btn" href="@Url.Action("Index","Sign_Up")">Register Now</a>
                     </div>
                </div>
           </div>

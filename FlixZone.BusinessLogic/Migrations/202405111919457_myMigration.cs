@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class initialModel : DbMigration
+    public partial class myMigration : DbMigration
     {
         public override void Up()
         {
@@ -19,7 +19,7 @@
                 .PrimaryKey(t => t.SessionId);
             
             CreateTable(
-                "dbo.UDbTables",
+                "dbo.UserLogins",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -36,7 +36,7 @@
         
         public override void Down()
         {
-            DropTable("dbo.UDbTables");
+            DropTable("dbo.UserLogins");
             DropTable("dbo.Sessions");
         }
     }

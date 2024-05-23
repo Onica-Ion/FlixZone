@@ -1,11 +1,11 @@
 ﻿using FlixZone.BusinessLogic.Interface;
 using FlixZone.BusinessLogic;
+using FlixZone.Web.Extension;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using FlixZone.Web.Extension;
 
 namespace FlixZone.Web.Controllers
 {

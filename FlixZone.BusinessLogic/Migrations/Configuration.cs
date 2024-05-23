@@ -5,14 +5,14 @@
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<FlixZone.BusinessLogic.DBModel.MainContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<FlixZone.BusinessLogic.DBContext.FatherContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(FlixZone.BusinessLogic.DBModel.MainContext context)
+        protected override void Seed(FlixZone.BusinessLogic.DBContext.FatherContext context)
         {
             //  This method will be called after migrating to the latest version.
 

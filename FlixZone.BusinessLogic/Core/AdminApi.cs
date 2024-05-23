@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FlixZone.Domain.Enum
+namespace FlixZone.BusinessLogic.Core
 {
-    public enum URole
+    public class AdminApi
     {
-        User,
-        Moderator,
-        Admin
     }
 }

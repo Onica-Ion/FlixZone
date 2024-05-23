@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FlixZone.Domain.Entities.User
+namespace FlixZone.Domain.Entities.User.DBModel
 {
     public class Session
     {

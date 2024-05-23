@@ -7,13 +7,13 @@ namespace FlixZone.BusinessLogic.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class initialModel : IMigrationMetadata
+    public sealed partial class myMigration : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(initialModel));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(myMigration));
         
         string IMigrationMetadata.Id
         {
-            get { return "202404220928233_initialModel"; }
+            get { return "202405111919457_myMigration"; }
         }
         
         string IMigrationMetadata.Source

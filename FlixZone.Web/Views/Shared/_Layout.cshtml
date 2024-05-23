@@ -3,90 +3,89 @@
 
 <html>
 <head>
-     <meta charset="utf-8" />
-     <title>FlixZone</title>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
-     <meta content="Coderthemes" name="author" />
-     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8" />
+    <title>FlixZone</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+    <meta content="Coderthemes" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-     <link rel="shortcut icon" href="~/Content/img/woman.png">
+    <link rel="shortcut icon" href="~/Content/img/woman.png">
 
-     <!-- Google Font -->
-     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"rel="stylesheet">
-
-     
-     @Styles.Render("~/bundles/boostrap/css")
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 
-     @*@Styles.Render("~/Content/css/bootstrap.min.css")
+    @Styles.Render("~/bundles/boostrap.min/css")
 
-     @Styles.Render("~/Content/css/font-awesome.min.css")
+    @Styles.Render("~/bundles/font-awesome/css")
 
-     @Styles.Render("~/Content/css/elegant-icons.css")
+    @Styles.Render("~/bundles/elegant-icons/css")
 
-     @Styles.Render("~/Content/css/plyr.css")
+    @Styles.Render("~/bundles/plyr/css")
 
-     @Styles.Render("~/Content/css/nice-select.css")
+    @Styles.Render("~/bundles/nice-select/css")
 
-     @Styles.Render("~/Content/css/owl.carousel.min.css")
+    @Styles.Render("~/bundles/owl.carousel.min/css")
 
-     @Styles.Render("~/Content/css/slicknav.min.css")
+    @Styles.Render("~/bundles/slicknav.min/css")
 
-     @Styles.Render("~/Content/css/style.css")*@
+    @Styles.Render("~/bundles/style/css")
 
+
+    @if (IsSectionDefined("Styles"))
+    {@RenderSection("Styles", required: false)}
 
 </head>
 
 <body>
-     <div>
-          <nav>
-               @Html.Partial("_Header")
-          </nav>
+    <div>
+        <nav>
+            @Html.Partial("_Header")
+        </nav>
 
-          <aside>
-               @Html.Partial("_Navigation")
-          </aside>
+        <aside>
+            @Html.Partial("_Navigation")
+        </aside>
 
-          <section>
-               @RenderBody()
+        <section>
+            @RenderBody()
 
-               @Html.Partial("_Footer")
-          </section>
+            @Html.Partial("_Footer")
+        </section>
 
-          <!-- Search model Begin -->
-          <div class="search-model">
-               <div class="h-100 d-flex align-items-center justify-content-center">
-                    <div class="search-close-switch"><i class="icon_close"></i></div>
-                    <form class="search-model-form">
-                         <input type="text" id="search-input" placeholder="Search here.....">
-                    </form>
-               </div>
-          </div>
-          <!-- Search model end -->
-          <!-- Js Plugins -->
+        <!-- Search model Begin -->
+        <div class="search-model">
+            <div class="h-100 d-flex align-items-center justify-content-center">
+                <div class="search-close-switch"><i class="icon_close"></i></div>
+                <form class="search-model-form">
+                    <input type="text" id="search-input" placeholder="Search here.....">
+                </form>
+            </div>
+        </div>
+        <!-- Search model end -->
+        <!-- Js Plugins -->
+
+        @Scripts.Render("~/bundles/jquery/js")
+
+        @Scripts.Render("~/bundles/bootstrap/js")
+
+        @Scripts.Render("~/bundles/player/js")
+
+        @Scripts.Render("~/bundles/jquery.nice/js")
+
+        @Scripts.Render("~/bundles/mixitup/js")
+
+        @Scripts.Render("~/bundles/jquery.slicknav/js")
+
+        @Scripts.Render("~/bundles/owl.carousel/js")
+
+        @Scripts.Render("~/bundles/main/js")
 
 
-          @Scripts.Render("~/bundles/boostrap/js")
+        @RenderSection("scripts", required: false)
 
-
-          @*@Scripts.Render("~/Scripts/js/jquery-3.3.1.min.js")
-
-          @Scripts.Render("~/Scripts/js/bootstrap.min.js")
-
-          @Scripts.Render("~/Scripts/js/player.js")
-
-          @Scripts.Render("~/Scripts/js/jquery.nice-select.min.js")
-
-          @Scripts.Render("~/Scripts/js/mixitup.min.js")
-
-          @Scripts.Render("~/Scripts/js/jquery.slicknav.js")
-
-          @Scripts.Render("~/Scripts/js/owl.carousel.min.js")
-
-          @Scripts.Render("~/Scripts/js/main.js")*@
-
-     </div>
+    </div>
 </body>
 </html>

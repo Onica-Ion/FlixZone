@@ -1,5 +1,6 @@
 ﻿using FlixZone.BusinessLogic.Core;
 using FlixZone.BusinessLogic.Interface;
+using FlixZone.Domain.Entities.Responce;
 using FlixZone.Domain.Entities.User;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,7 @@ namespace FlixZone.BusinessLogic
         {
             return Cookie(loginCredential);
         }
+
         public UserMinimal GetUserByCookie(string apiCookieValue)
         {
             return UserCookie(apiCookieValue);

@@ -7,6 +7,7 @@ using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
 using System.Web.Optimization;
+using FlixZone.Domain.Entities.User;
 
 namespace FlixZone.Web
 {

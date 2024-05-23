@@ -1,15 +1,18 @@
-﻿using System;
+﻿using FlixZone.BusinessLogic.DBContext;
+using FlixZone.Domain.Entities.Responce;
+using FlixZone.Domain.Entities.User;
+using FlixZone.Domain.Entities.User.DBModel;
+using FlixZone.Helpers;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
-using FlixZone.Helpers;
-using FlixZone.BusinessLogic.DBModel;
-using FlixZone.Domain.Entities.User;
+using System.Linq;
+using System.Reflection.Emit;
+using System.Text;
+using System.Threading.Tasks;
 using System.Web;
-using AutoMapper;
+using System.Web.UI.WebControls;
 
 namespace FlixZone.BusinessLogic.Core
 {
@@ -17,26 +20,26 @@ namespace FlixZone.BusinessLogic.Core
     {
         internal ULoginResp UserLoginAction(ULoginData data)
         {
-            UDbTable result;
+            UserLogin status;
             var validate = new EmailAddressAttribute();
             if (validate.IsValid(data.Credential))
             {
                 var pass = LoginHelper.HashGen(data.Password);
-                using (var db = new UserContext())
+                using (var _userContext = new UserContext())
                 {
-                    result = db.Users.FirstOrDefault(u => u.Email == data.Credential && u.Password == pass);
+                    status = _userContext.Users.Where(u => u.Email == data.Credential && u.Password == data.Password).FirstOrDefault();
                 }
 
-                if (result == null)
+                if (status == null)
                 {
                     return new ULoginResp { Status = false, StatusMsg = "The Username or Password is Incorrect" };
                 }
 
                 using (var todo = new UserContext())
                 {
-                    result.LasIp = data.LoginIp;
-                    result.LastLogin = data.LoginDateTime;
-                    todo.Entry(result).State = EntityState.Modified;
+                    status.LasIp = data.LoginIp;
+                    status.LastLogin = data.LoginDateTime;
+                    todo.Entry(status).State = EntityState.Modified;
                     todo.SaveChanges();
                 }
 
@@ -47,25 +50,26 @@ namespace FlixZone.BusinessLogic.Core
                 var pass = LoginHelper.HashGen(data.Password);
                 using (var db = new UserContext())
                 {
-                    result = db.Users.FirstOrDefault(u => u.Username == data.Credential && u.Password == pass);
+                    status = db.Users.FirstOrDefault(u => u.Username == data.Credential && u.Password == data.Password);
                 }
 
-                if (result == null)
+                if (status == null)
                 {
                     return new ULoginResp { Status = false, StatusMsg = "The Username or Password is Incorrect" };
                 }
 
                 using (var todo = new UserContext())
                 {
-                    result.LasIp = data.LoginIp;
-                    result.LastLogin = data.LoginDateTime;
-                    todo.Entry(result).State = EntityState.Modified;
+                    status.LasIp = data.LoginIp;
+                    status.LastLogin = data.LoginDateTime;
+                    todo.Entry(status).State = EntityState.Modified;
                     todo.SaveChanges();
                 }
 
                 return new ULoginResp { Status = true };
             }
         }
+
         internal HttpCookie Cookie(string loginCredential)
         {
             var apiCookie = new HttpCookie("X-KEY")
@@ -110,10 +114,11 @@ namespace FlixZone.BusinessLogic.Core
 
             return apiCookie;
         }
+
         internal UserMinimal UserCookie(string cookie)
         {
             Session session;
-            UDbTable curentUser;
+            UserLogin curentUser;
 
             using (var db = new SessionContext())
             {
@@ -135,8 +140,16 @@ namespace FlixZone.BusinessLogic.Core
             }
 
             if (curentUser == null) return null;
-            Mapper.Initialize(cfg => cfg.CreateMap<UDbTable, UserMinimal>());
-            var userminimal = Mapper.Map<UserMinimal>(curentUser);
+
+            UserMinimal userminimal = new UserMinimal
+            {
+                Id = curentUser.Id,
+                Username = curentUser.Username,
+                Email = curentUser.Email,
+                LastLogin = curentUser.LastLogin,
+                LasIp = curentUser.LasIp,
+                Level = curentUser.Level
+            };
 
             return userminimal;
         }

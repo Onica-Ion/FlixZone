@@ -14,5 +14,6 @@ namespace FlixZone.Web.Models
         public LiveList LiveList { get; set; }
         public TopViewList TopViewList { get; set; }
         public NewCommentList NewCommentList { get; set; }
+        public UserData UserData { get; set; }
     }
 }

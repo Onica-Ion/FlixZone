@@ -6,14 +6,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FlixZone.BusinessLogic.DBModel
+namespace FlixZone.BusinessLogic.DBContext
 {
     public class UserContext : DbContext
     {
         public UserContext() :
-            base("name=flixZone") // connectionstring name define in your web.config
+            base("name=flixZone")
         {
+            Database.SetInitializer<UserContext>(null);
         }
-        public virtual DbSet<UDbTable> Users { get; set; }
+
+        public virtual DbSet<UserLogin> Users { get; set; }
     }
 }

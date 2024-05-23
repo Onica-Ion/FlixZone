@@ -1,4 +1,6 @@
-﻿<!-- Page Preloder -->
+﻿@*@model FlixZone.Web.Models.UserData*@
+
+<!-- Page Preloder -->
 <div id="preloder">
      <div class="loader"></div>
 </div>
@@ -9,7 +11,7 @@
           <div class="row">
                <div class="col-lg-2">
                     <div class="header__logo">
-                         <a class="@(Url.RouteUrl(ViewContext.RouteData.Values) == "/" ? "active" : "")" href="/home">
+                         <a href="@Url.Action("Index","Home")">
                               <img src="~/Content/img/logo.png" alt="">
                          </a>
                     </div>
@@ -18,19 +20,19 @@
                     <div class="header__nav">
                          <nav class="header__menu mobile-menu">
                               <ul>
-                                   <li class="active"><a class="@(Url.RouteUrl(ViewContext.RouteData.Values) == "/" ? "active" : "")" href="/home">HomePage</a></li>
+                                   <li class="active"><a href="@Url.Action("Index","Home")">HomePage</a></li>
                                    <li>
-                                        <a class="@(Url.RouteUrl(ViewContext.RouteData.Values) == "/categories" ? "active" : "")" href="/categories">Categories <span class="arrow_carrot-down"></span></a>
+                                        <a href="@Url.Action("Index","Categories")">Categories <span class="arrow_carrot-down"></span></a>
                                         <ul class="dropdown">
-                                             <li><a class="@(Url.RouteUrl(ViewContext.RouteData.Values) == "/categories" ? "active" : "")" href="/categories">Categories</a></li>
-                                             <li><a class="@(Url.RouteUrl(ViewContext.RouteData.Values) == "/anime_details" ? "active" : "")" href="/anime_details">Anime Details</a></li>
-                                             <li><a class="@(Url.RouteUrl(ViewContext.RouteData.Values) == "/anime_watching" ? "active" : "")" href="/anime_watching">Anime Watching</a></li>
-                                             <li><a class="@(Url.RouteUrl(ViewContext.RouteData.Values) == "/blog_details" ? "active" : "")" href="/blog_details">Blog Details</a></li>
-                                             <li><a class="@(Url.RouteUrl(ViewContext.RouteData.Values) == "/sign_up" ? "active" : "")" href="/sign_up">Sign Up</a></li>
-                                             <li><a class="@(Url.RouteUrl(ViewContext.RouteData.Values) == "/login" ? "active" : "")" href="/login">Login</a></li>
+                                             <li><a href="@Url.Action("Index","Categories")">Categories</a></li>
+                                             <li><a href="@Url.Action("Index","Anime_Details")">Anime Details</a></li>
+                                             <li><a href="@Url.Action("Index","Anime_Watching")">Anime Watching</a></li>
+                                             <li><a href="@Url.Action("Index","Blog_Details")">Blog Details</a></li>
+                                             <li><a href="@Url.Action("Index","Sign_Up")">Sign Up</a></li>
+                                             <li><a href="@Url.Action("Index","Login")">Login</a></li>
                                         </ul>
                                    </li>
-                                   <li><a class="@(Url.RouteUrl(ViewContext.RouteData.Values) == "/blog" ? "active" : "")" href="/blog">Our Blog</a></li>
+                                   <li><a href="@Url.Action("Index","Blog")">Our Blog</a></li>
                                    <li><a href="#">Contacts</a></li>
                               </ul>
                          </nav>
@@ -39,7 +41,18 @@
                <div class="col-lg-2">
                     <div class="header__right">
                          <a href="#" class="search-switch"><span class="icon_search"></span></a>
-                         <a class="@(Url.RouteUrl(ViewContext.RouteData.Values) == "/login" ? "active" : "")" href="/login"><span class="icon_profile"></span></a>
+
+                        @{ 
+                            if ((string)System.Web.HttpContext.Current.Session["LoginStatus"] == "login")
+                            {
+                            <span>@*@Html.DisplayFor(u => u.Username)*@</span>
+                            }
+                            else 
+                            { 
+                                <a href="@Url.Action("Index","Login")"><span class="icon_profile"></span></a>
+                            }
+                        }
+
                     </div>
                </div>
           </div>

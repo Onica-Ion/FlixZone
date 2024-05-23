@@ -4,11 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace FlixZone.Web.Controllers
+namespace FlixZone.Web.Controllers.NavControllers
 {
-    public class Anime_WatchingController : Controller
+    public class Blog_DetailsController : Controller
     {
-        // GET: Anime_Watchig
+        // GET: Blog_Details
         public ActionResult Index()
         {
             return View();
