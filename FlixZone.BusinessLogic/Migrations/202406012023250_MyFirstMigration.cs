@@ -3,10 +3,30 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class myMigration : DbMigration
+    public partial class MyFirstMigration : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.AnimeLists",
+                c => new
+                    {
+                        Anime_Id = c.Int(nullable: false, identity: true),
+                        Anime_Name = c.String(nullable: false),
+                        Anime_Author = c.String(nullable: false),
+                        Anime_Description = c.String(nullable: false),
+                        Anime_Type = c.String(nullable: false),
+                        Anime_Studios = c.String(),
+                        Anime_Date = c.String(),
+                        Anime_Status = c.String(),
+                        Anime_Genre = c.String(nullable: false),
+                        Anime_Views = c.Int(nullable: false),
+                        Anime_Comment = c.Int(nullable: false),
+                        Anime_Image = c.String(nullable: false),
+                        Anime_Video = c.String(nullable: false),
+                    })
+                .PrimaryKey(t => t.Anime_Id);
+            
             CreateTable(
                 "dbo.Sessions",
                 c => new
@@ -38,6 +58,7 @@
         {
             DropTable("dbo.UserLogins");
             DropTable("dbo.Sessions");
+            DropTable("dbo.AnimeLists");
         }
     }
 }

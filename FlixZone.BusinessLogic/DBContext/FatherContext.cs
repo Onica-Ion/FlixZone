@@ -1,4 +1,5 @@
-﻿using FlixZone.Domain.Entities.User;
+﻿using FlixZone.Domain.Entities.Anime;
+using FlixZone.Domain.Entities.User;
 using FlixZone.Domain.Entities.User.DBModel;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,13 @@ namespace FlixZone.BusinessLogic.DBContext
         }
 
         public virtual DbSet<Session> Sessions { get; set; }
+
+
+
         public virtual DbSet<UserLogin> Users { get; set; }
+
+
+
+        public virtual DbSet<AnimeList> AnimeList { get; set; }
     }
 }

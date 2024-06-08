@@ -53,16 +53,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnimeBL.cs" />
     <Compile Include="BussinesLogic.cs" />
     <Compile Include="Core\AdminApi.cs" />
+    <Compile Include="Core\AnimeApi.cs" />
     <Compile Include="Core\UserApi.cs" />
     <Compile Include="DBContext\FatherContext.cs" />
     <Compile Include="DBContext\SessionContext.cs" />
     <Compile Include="DBContext\UserContext.cs" />
+    <Compile Include="Interface\IAnime.cs" />
     <Compile Include="Interface\ISession.cs" />
-    <Compile Include="Migrations\202405111919457_myMigration.cs" />
-    <Compile Include="Migrations\202405111919457_myMigration.Designer.cs">
-      <DependentUpon>202405111919457_myMigration.cs</DependentUpon>
+    <Compile Include="Migrations\202406012023250_MyFirstMigration.cs" />
+    <Compile Include="Migrations\202406012023250_MyFirstMigration.Designer.cs">
+      <DependentUpon>202406012023250_MyFirstMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -83,8 +86,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202405111919457_myMigration.resx">
-      <DependentUpon>202405111919457_myMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202406012023250_MyFirstMigration.resx">
+      <DependentUpon>202406012023250_MyFirstMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

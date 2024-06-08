@@ -7,7 +7,7 @@ namespace FlixZone.Web.Models
 {
     public class CombinedModel
     {
-        public AnimeList AnimeList { get; set; }
+        public AnimeLists AnimeList { get; set; }
         public TrendingList TrendingList { get; set; }
         public PopularList PopularList { get; set; }
         public RecentList RecentList { get; set; }

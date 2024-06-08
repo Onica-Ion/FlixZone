@@ -278,15 +278,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AnimeList\AnimeList.cs" />
-    <Compile Include="Models\AnimeList\AnimeProduct.cs" />
-    <Compile Include="Models\AnimeList\CombinedModel.cs" />
-    <Compile Include="Models\AnimeList\LiveList.cs" />
-    <Compile Include="Models\AnimeList\NewCommentList.cs" />
-    <Compile Include="Models\AnimeList\PopularList.cs" />
-    <Compile Include="Models\AnimeList\RecentList.cs" />
-    <Compile Include="Models\AnimeList\TopViewList.cs" />
-    <Compile Include="Models\AnimeList\TrendingList.cs" />
+    <Compile Include="Models\AnimeData.cs" />
+    <Compile Include="Models\List\AnimeLists.cs" />
+    <Compile Include="Models\List\AnimeProduct.cs" />
+    <Compile Include="Models\List\CombinedModel.cs" />
+    <Compile Include="Models\List\LiveList.cs" />
+    <Compile Include="Models\List\NewCommentList.cs" />
+    <Compile Include="Models\List\PopularList.cs" />
+    <Compile Include="Models\List\RecentList.cs" />
+    <Compile Include="Models\List\TopViewList.cs" />
+    <Compile Include="Models\List\TrendingList.cs" />
     <Compile Include="Models\UserData.cs" />
     <Compile Include="Models\ULogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

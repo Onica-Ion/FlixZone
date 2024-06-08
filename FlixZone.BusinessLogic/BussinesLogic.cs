@@ -13,5 +13,9 @@ namespace FlixZone.BusinessLogic
         {
             return new SessionBL();
         }
+        public IAnime GetAnimeBL()
+        {
+            return new AnimeBL();
+        }
     }
 }

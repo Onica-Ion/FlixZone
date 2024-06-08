@@ -1,4 +1,5 @@
 ﻿using FlixZone.BusinessLogic.DBContext;
+using FlixZone.Domain.Entities.Anime;
 using FlixZone.Domain.Entities.Responce;
 using FlixZone.Domain.Entities.User;
 using FlixZone.Domain.Entities.User.DBModel;
