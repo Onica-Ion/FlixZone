@@ -1,44 +1,33 @@
-﻿@*@model List<FlixZone.Domain.Entities.Anime.AnimeList>*@
-@model List<FlixZone.Web.Models.AnimeData>
+﻿@model List<FlixZone.Web.Models.AnimeData>
 
       <!-- Hero Section Begin -->
       <section class="hero">
            <div class="container">
                <div class="hero__slider owl-carousel">
-                   @*@foreach (var anime in Model)
+                   @if (Model == null || !Model.Any())
                    {
-                       <div class="hero__items set-bg" data-setbg="@anime.Anime_Image">
-                           <div class="row">
-                               <div class="col-lg-6">
-                                   <div class="hero__text">
-                                       <div class="label">@anime.Anime_Genre</div>
-                                       <h2>@anime.Anime_Name</h2>
-                                       <p>@anime.Anime_Description</p>
-                                       <a href="#"><span>Watch Now</span> <i class="fa fa-angle-right"></i></a>
+                       <p>No anime available. Please check back later.</p>
+                   }
+                   else
+                   {
+                       int count = Model.Count < 3 ? Model.Count : 3;
+
+                       for (int i = 0; i < count; i++)
+                       {
+                           var anime = Model[i];
+                           <div class="hero__items set-bg" data-setbg="@anime.Anime_Poster">
+                               <div class="row">
+                                   <div class="col-lg-6">
+                                       <div class="hero__text">
+                                           <div class="label">@anime.Anime_Genre</div>
+                                           <h2>@anime.Anime_Name</h2>
+                                           <p>@anime.Anime_Description</p>
+                                           <a href="@Url.Action("Index","Anime_Watching", new {id = anime.Anime_Id})"><span>Watch Now</span> <i class="fa fa-angle-right"></i></a>
+                                       </div>
                                    </div>
                                </div>
                            </div>
-                       </div>
-                   }*@
-
-                   @for (int i = 0; i < 9; i++)
-                   {
-                       var anime = Model[i];
-                       <div class="hero__items set-bg" data-setbg="@anime.Anime_Image">
-                           <div class="row">
-                               <div class="col-lg-6">
-                                   <div class="hero__text">
-                                       <div class="label">@anime.Anime_Genre</div>
-                                       <h2>@anime.Anime_Name</h2>
-                                       <p>@anime.Anime_Description</p>
-                                       @*<a href="#"><span>Watch Now</span> <i class="fa fa-angle-right"></i></a>*@
-
-                                       <a href="@Url.Action("Index","Anime_Watching", new {id = anime.Anime_Id})"><span>Watch Now</span> <i class="fa fa-angle-right"></i></a>
-
-                                   </div>
-                               </div>
-                           </div>
-                       </div>
+                       }
                    }
                </div>
            </div>
@@ -66,46 +55,34 @@
                                     </div>
                                </div>
                                <div class="row">
-                                       @*@foreach(var anime in Model)
-                                          {
-                                              <div class="col-lg-4 col-md-6 col-sm-6">
-                                                   <div class="product__item">
-                                                        <div class="product__item__pic set-bg" data-setbg="@anime.Anime_Image">
-                                                             <div class="ep">@anime.Anime_Comment</div>
-                                                             <div class="comment"><i class="fa fa-comments"></i> @anime.Anime_Comment</div>
-                                                             <div class="view"><i class="fa fa-eye"></i> @anime.Anime_Views</div>
-                                                        </div>
-                                                        <div class="product__item__text">
-                                                             <ul>
-                                                                  <li>Active</li>
-                                                                  <li>Movie</li>
-                                                             </ul>
-                                                             <h5><a href="#">@anime.Anime_Name</a></h5>
-                                                        </div>
-                                                   </div>
-                                              </div>
-                                          }*@
-                                   @for(int i = 0; i < 6; i++) 
+                                   @if (Model == null || !Model.Any())
                                    {
-                                       var anime = Model[i];
-                                       <div class="col-lg-4 col-md-6 col-sm-6">
-                                           <div class="product__item">
-                                               <div class="product__item__pic set-bg" data-setbg="@anime.Anime_Image">
-                                                   <div class="ep">@anime.Anime_Comment</div>
-                                                   <div class="comment"><i class="fa fa-comments"></i> @anime.Anime_Comment</div>
-                                                   <div class="view"><i class="fa fa-eye"></i> @anime.Anime_Views</div>
-                                               </div>
-                                               <div class="product__item__text">
-                                                   <ul>
-                                                       <li>Active</li>
-                                                       <li>Movie</li>
-                                                   </ul>
-                                                   @*<h5><a href="#">@anime.Anime_Name</a></h5>*@
+                                       <p>No anime available. Please check back later.</p>
+                                   }
+                                   else
+                                   {
+                                       int count = Model.Count < 6 ? Model.Count : 6;
 
-                                                   <h5><a href="@Url.Action("Index","Anime_Details", new {id = anime.Anime_Id})">@anime.Anime_Name</a></h5>
+                                       for (int i = 0; i < count; i++)
+                                       {
+                                           var anime = Model[i];
+                                           <div class="col-lg-4 col-md-6 col-sm-6">
+                                               <div class="product__item">
+                                                   <div class="product__item__pic set-bg" data-setbg="@anime.Anime_Poster">
+                                                       <div class="ep">@anime.Anime_Comment</div>
+                                                       <div class="comment"><i class="fa fa-comments"></i> @anime.Anime_Comment</div>
+                                                       <div class="view"><i class="fa fa-eye"></i> @anime.Anime_Views</div>
+                                                   </div>
+                                                   <div class="product__item__text">
+                                                       <ul>
+                                                           <li>Active</li>
+                                                           <li>Movie</li>
+                                                       </ul>
+                                                       <h5><a href="@Url.Action("Index","Anime_Details", new {id = anime.Anime_Id})">@anime.Anime_Name</a></h5>
+                                                   </div>
                                                </div>
                                            </div>
-                                       </div>
+                                       }
                                    }
                                </div>
                           </div>
@@ -125,49 +102,37 @@
                                       </div>
                                   </div>
                               </div>
-                               <div class="row">
-                                          @*@foreach (var anime in Model)
-                                          {
-                                              <div class="col-lg-4 col-md-6 col-sm-6">
-                                                  <div class="product__item">
-                                                      <div class="product__item__pic set-bg" data-setbg="@anime.Anime_Image">
-                                                          <div class="ep">@anime.Anime_Comment</div>
-                                                          <div class="comment"><i class="fa fa-comments"></i> @anime.Anime_Comment</div>
-                                                          <div class="view"><i class="fa fa-eye"></i> @anime.Anime_Views</div>
-                                                      </div>
-                                                      <div class="product__item__text">
-                                                          <ul>
-                                                              <li>Active</li>
-                                                              <li>Movie</li>
-                                                          </ul>
-                                                          <h5><a href="#">@anime.Anime_Name</a></h5>
-                                                      </div>
+                              <div class="row">
+                                  @if (Model == null || !Model.Any())
+                                  {
+                                      <p>No anime available. Please check back later.</p>
+                                  }
+                                  else
+                                  {
+                                      int count = Model.Count < 6 ? Model.Count : 6;
+
+                                      for (int i = 0; i < count; i++)
+                                      {
+                                          var anime = Model[i];
+                                          <div class="col-lg-4 col-md-6 col-sm-6">
+                                              <div class="product__item">
+                                                  <div class="product__item__pic set-bg" data-setbg="@anime.Anime_Poster">
+                                                      <div class="ep">@anime.Anime_Comment</div>
+                                                      <div class="comment"><i class="fa fa-comments"></i> @anime.Anime_Comment</div>
+                                                      <div class="view"><i class="fa fa-eye"></i> @anime.Anime_Views</div>
+                                                  </div>
+                                                  <div class="product__item__text">
+                                                      <ul>
+                                                          <li>Active</li>
+                                                          <li>Movie</li>
+                                                      </ul>
+                                                      <h5><a href="@Url.Action("Index","Anime_Details", new {id = anime.Anime_Id})">@anime.Anime_Name</a></h5>
                                                   </div>
                                               </div>
-                                          }*@
-                                   @for(int i = 0; i < 6; i++) 
-                                   {
-                                       var anime = Model[i];
-                                       <div class="col-lg-4 col-md-6 col-sm-6">
-                                           <div class="product__item">
-                                               <div class="product__item__pic set-bg" data-setbg="@anime.Anime_Image">
-                                                   <div class="ep">@anime.Anime_Comment</div>
-                                                   <div class="comment"><i class="fa fa-comments"></i> @anime.Anime_Comment</div>
-                                                   <div class="view"><i class="fa fa-eye"></i> @anime.Anime_Views</div>
-                                               </div>
-                                               <div class="product__item__text">
-                                                   <ul>
-                                                       <li>Active</li>
-                                                       <li>Movie</li>
-                                                   </ul>
-                                                   @*<h5><a href="#">@anime.Anime_Name</a></h5>*@
-
-                                                   <h5><a href="@Url.Action("Index","Anime_Details", new {id = anime.Anime_Id})">@anime.Anime_Name</a></h5>
-                                               </div>
-                                           </div>
-                                       </div>
-                                   }
-                               </div>
+                                          </div>
+                                      }
+                                  }
+                              </div>
                           </div>
                           <div class="recent__product">
                                <div class="row">
@@ -186,11 +151,20 @@
                                     </div>
                                </div>
                                <div class="row">
-                                       @*@foreach (var anime in Model)
+                                   @if (Model == null || !Model.Any())
+                                   {
+                                       <p>No anime available. Please check back later.</p>
+                                   }
+                                   else
+                                   {
+                                       int count = Model.Count < 6 ? Model.Count : 6;
+
+                                       for (int i = 0; i < count; i++)
                                        {
+                                           var anime = Model[i];
                                            <div class="col-lg-4 col-md-6 col-sm-6">
                                                <div class="product__item">
-                                                   <div class="product__item__pic set-bg" data-setbg="@anime.Anime_Image">
+                                                   <div class="product__item__pic set-bg" data-setbg="@anime.Anime_Poster">
                                                        <div class="ep">@anime.Anime_Comment</div>
                                                        <div class="comment"><i class="fa fa-comments"></i> @anime.Anime_Comment</div>
                                                        <div class="view"><i class="fa fa-eye"></i> @anime.Anime_Views</div>
@@ -200,32 +174,11 @@
                                                            <li>Active</li>
                                                            <li>Movie</li>
                                                        </ul>
-                                                       <h5><a href="#">@anime.Anime_Views</a></h5>
+                                                       <h5><a href="@Url.Action("Index","Anime_Details", new {id = anime.Anime_Id})">@anime.Anime_Name</a></h5>
                                                    </div>
                                                </div>
                                            </div>
-                                       }*@
-                                   @for(int i = 0; i < 6; i++)
-                                   {
-                                       var anime = Model[i];
-                                       <div class="col-lg-4 col-md-6 col-sm-6">
-                                           <div class="product__item">
-                                               <div class="product__item__pic set-bg" data-setbg="@anime.Anime_Image">
-                                                   <div class="ep">@anime.Anime_Comment</div>
-                                                   <div class="comment"><i class="fa fa-comments"></i> @anime.Anime_Comment</div>
-                                                   <div class="view"><i class="fa fa-eye"></i> @anime.Anime_Views</div>
-                                               </div>
-                                               <div class="product__item__text">
-                                                   <ul>
-                                                       <li>Active</li>
-                                                       <li>Movie</li>
-                                                   </ul>
-                                                   @*<h5><a href="#">@anime.Anime_Name</a></h5>*@
-
-                                                   <h5><a href="@Url.Action("Index","Anime_Details", new {id = anime.Anime_Id})">@anime.Anime_Name</a></h5>
-                                               </div>
-                                           </div>
-                                       </div>
+                                       }
                                    }
                                </div>
                           </div>
@@ -246,11 +199,20 @@
                                     </div>
                                </div>
                                <div class="row">
-                                       @*@foreach (var anime in Model)
+                                   @if (Model == null || !Model.Any())
+                                   {
+                                       <p>No anime available. Please check back later.</p>
+                                   }
+                                   else
+                                   {
+                                       int count = Model.Count < 6 ? Model.Count : 6;
+
+                                       for (int i = 0; i < count; i++)
                                        {
+                                           var anime = Model[i];
                                            <div class="col-lg-4 col-md-6 col-sm-6">
                                                <div class="product__item">
-                                                   <div class="product__item__pic set-bg" data-setbg="@anime.Anime_Image">
+                                                   <div class="product__item__pic set-bg" data-setbg="@anime.Anime_Poster">
                                                        <div class="ep">@anime.Anime_Comment</div>
                                                        <div class="comment"><i class="fa fa-comments"></i> @anime.Anime_Comment</div>
                                                        <div class="view"><i class="fa fa-eye"></i> @anime.Anime_Views</div>
@@ -260,32 +222,11 @@
                                                            <li>Active</li>
                                                            <li>Movie</li>
                                                        </ul>
-                                                       <h5><a href="#">@anime.Anime_Views</a></h5>
+                                                       <h5><a href="@Url.Action("Index","Anime_Details", new {id = anime.Anime_Id})">@anime.Anime_Name</a></h5>
                                                    </div>
                                                </div>
                                            </div>
-                                       }*@
-                                   @for(int i = 0; i < 6; i++) 
-                                   {
-                                       var anime = Model[i];
-                                       <div class="col-lg-4 col-md-6 col-sm-6">
-                                           <div class="product__item">
-                                               <div class="product__item__pic set-bg" data-setbg="@anime.Anime_Image">
-                                                   <div class="ep">@anime.Anime_Comment</div>
-                                                   <div class="comment"><i class="fa fa-comments"></i> @anime.Anime_Comment</div>
-                                                   <div class="view"><i class="fa fa-eye"></i> @anime.Anime_Views</div>
-                                               </div>
-                                               <div class="product__item__text">
-                                                   <ul>
-                                                       <li>Active</li>
-                                                       <li>Movie</li>
-                                                   </ul>
-                                                   @*<h5><a href="#">@anime.Anime_Name</a></h5>*@
-
-                                                   <h5><a href="@Url.Action("Index","Anime_Details", new {id = anime.Anime_Id})">@anime.Anime_Name</a></h5>
-                                               </div>
-                                           </div>
-                                       </div>
+                                       }
                                    }
                                </div>
                           </div>
@@ -303,53 +244,42 @@
                                          <li data-filter=".years">Years</li>
                                     </ul>
                                     <div class="filter__gallery">
-                                        @*@foreach (var anime in Model)
+                                        @if (Model == null || !Model.Any())
                                         {
-                                            <div class="product__sidebar__view__item set-bg mix day years"
-                                                 data-setbg="@anime.Anime_Image">
-                                                <div class="ep">@anime.Anime_Comment</div>
-                                                <div class="view"><i class="fa fa-eye"></i> @anime.Anime_Views</div>
-                                                <h5><a href="#">@anime.Anime_Name</a></h5>
-                                            </div>
-                                        }*@
-                                        @for(int i = 0; i < 5; i++)
+                                            <p>No anime available. Please check back later.</p>
+                                        }
+                                        else
                                         {
-                                            var anime = Model[i];
-                                            <div class="product__sidebar__view__item set-bg mix day years"
-                                                 data-setbg="@anime.Anime_Image">
-                                                <div class="ep">@anime.Anime_Comment</div>
-                                                <div class="view"><i class="fa fa-eye"></i> @anime.Anime_Views</div>
-                                                @*<h5><a href="#">@anime.Anime_Name</a></h5>*@
+                                            int count = Model.Count < 5 ? Model.Count : 5;
 
-                                                <h5><a href="@Url.Action("Index","Anime_Details", new {id = anime.Anime_Id})">@anime.Anime_Name</a></h5>
-                                            </div>
+                                            for (int i = 0; i < count; i++)
+                                            {
+                                                var anime = Model[i];
+                                                <div class="product__sidebar__view__item set-bg mix day years"
+                                                     data-setbg="@anime.Anime_Poster">
+                                                    <div class="ep">@anime.Anime_Comment</div>
+                                                    <div class="view"><i class="fa fa-eye"></i> @anime.Anime_Views</div>
+                                                    <h5><a href="@Url.Action("Index","Anime_Details", new {id = anime.Anime_Id})">@anime.Anime_Name</a></h5>
+                                                </div>
+                                            }
                                         }
                                     </div>
                                </div>
-                                   <div class="product__sidebar__comment">
-                                       <div class="section-title">
-                                           <h5>New Comment</h5>
-                                       </div>
-                                       @*@foreach (var anime in Model)
-                                       {
-                                           <div class="product__sidebar__comment__item">
-                                               <div class="product__sidebar__comment__item__pic">
-                                                   <img src="@anime.Anime_Image" alt="">
-                                               </div>
-                                               <div class="product__sidebar__comment__item__text">
-                                                   <ul>
-                                                       <li>Active</li>
-                                                       <li>Movie</li>
-                                                   </ul>
-                                                   <h5><a href="#">@anime.Anime_Name</a></h5>
-                                                   <span><i class="fa fa-eye"></i>@anime.Anime_Views Viewes</span>
-                                               </div>
-                                           </div>
-                                       }*@
+                               <div class="product__sidebar__comment">
+                                   <div class="section-title">
+                                       <h5>New Comment</h5>
+                                   </div>
 
-                                       <!-- ????????????????????????? -->
+                                   <!-- ????????????????????????? -->
+                                   @if (Model == null || !Model.Any())
+                                   {
+                                       <p>No anime available. Please check back later.</p>
+                                   }
+                                   else
+                                   {
+                                       int count = Model.Count < 4 ? Model.Count : 4;
 
-                                       @for(int i = 0; i < 4; i++)
+                                       for (int i = 0; i < count; i++)
                                        {
                                            var anime = Model[i];
                                            <div class="product__sidebar__comment__item">
@@ -361,15 +291,14 @@
                                                        <li>Active</li>
                                                        <li>Movie</li>
                                                    </ul>
-                                                   @*<h5><a href="#">@anime.Anime_Name</a></h5>*@
-
                                                    <h5><a href="@Url.Action("Index","Anime_Details", new {id = anime.Anime_Id})">@anime.Anime_Name</a></h5>
 
                                                    <span><i class="fa fa-eye"></i>@anime.Anime_Views Viewes</span>
                                                </div>
                                            </div>
                                        }
-                                   </div>
+                                   }
+                               </div>
                                </div>
                           </div>
                      </div>

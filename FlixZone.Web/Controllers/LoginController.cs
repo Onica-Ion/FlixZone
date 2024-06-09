@@ -46,6 +46,7 @@ namespace FlixZone.Web.Controllers
                     HttpCookie cookie = _session.GenCookie(_userLogin.Credential);
                     ControllerContext.HttpContext.Response.Cookies.Add(cookie);
 
+                    Session["Username"] = data.Credential;
                     return RedirectToAction("Index", "Home");
                 }
                 else

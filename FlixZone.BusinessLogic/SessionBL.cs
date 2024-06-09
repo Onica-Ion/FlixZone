@@ -26,5 +26,10 @@ namespace FlixZone.BusinessLogic
         {
             return UserCookie(apiCookieValue);
         }
+
+        public List<UserLogin> GetUsers()
+        {
+            return GetUsersFromDb();
+        }
     }
 }

@@ -22,5 +22,24 @@ namespace FlixZone.BusinessLogic.DBContext
 
 
         public virtual DbSet<AnimeList> AnimeList { get; set; }
+        public virtual DbSet<Reviews> Reviews { get; set; }
+        public virtual DbSet<Comment> Comments { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            // Configurarea relației many-to-one între AnimeList și Comment
+            modelBuilder.Entity<Comment>()
+                .HasRequired(c => c.Anime)
+                .WithMany(a => a.Comments)
+                .HasForeignKey(c => c.Anime_Id);
+
+            // Configurarea relației many-to-one între AnimeList și Review
+            modelBuilder.Entity<Reviews>()
+                .HasRequired(r => r.Anime)
+                .WithMany(a => a.Reviews)
+                .HasForeignKey(r => r.Anime_Id);
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

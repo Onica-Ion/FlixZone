@@ -21,6 +21,7 @@ namespace FlixZone.Web.Models
         public int Anime_Views { get; set; }
         public int Anime_Comment { get; set; }
         public string Anime_Image { get; set; }
+        public string Anime_Poster { get; set; }
         public string Anime_Video { get; set; }
 
         /*"product__sidebar__view__item set-bg mix day years",//day,years top view

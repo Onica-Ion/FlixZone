@@ -19,6 +19,16 @@ namespace FlixZone.BusinessLogic.Core
 {
     public class UserApi
     {
+        internal List<UserLogin> GetUsersFromDb()
+        {
+            var user = new List<UserLogin>();
+            using (var db = new UserContext())
+            {
+                user = db.Users
+                    .ToList();
+            }
+            return user;
+        }
         internal ULoginResp UserLoginAction(ULoginData data)
         {
             UserLogin status;

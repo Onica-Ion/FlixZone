@@ -1,4 +1,4 @@
-﻿@model FlixZone.Web.Models.AnimeData
+﻿@model FlixZone.Web.Models.CombinedModel
 
 <!-- Breadcrumb Begin -->
 <div class="breadcrumb-option">
@@ -11,7 +11,7 @@
                        <a href="#">Romance</a>
                        @*<span>Fate Stay Night: Unlimited Blade</span>*@
 
-                       <span>@Model.Anime_Name</span>
+                       <span>@Model.AnimeDetail.Anime_Name</span>
 
                    </div>
                </div>
@@ -25,8 +25,8 @@
           <div class="row">
                <div class="col-lg-12">
                     <div class="anime__video__player">
-                         <video id="player" playsinline controls data-poster="@Model.Anime_Image">
-                              <source src="@Model.Anime_Video" type="video/mp4" />
+                         <video id="player" playsinline controls data-poster="@Model.AnimeDetail.Anime_Image">
+                              <source src="@Model.AnimeDetail.Anime_Video" type="video/mp4" />
                               <!-- Captions are optional -->
                               <track kind="captions" label="English captions" src="#" srclang="en" default />
                          </video>
@@ -59,79 +59,47 @@
           </div>
           <div class="row">
                <div class="col-lg-8">
-                    <div class="anime__details__review">
-                         <div class="section-title">
-                              <h5>Reviews</h5>
-                         </div>
-                         <div class="anime__review__item">
-                              <div class="anime__review__item__pic">
-                                   <img src="~/Content/img/anime/review-1.jpg" alt="">
-                              </div>
-                              <div class="anime__review__item__text">
-                                   <h6>Chris Curry - <span>1 Hour ago</span></h6>
-                                   <p>
-                                        whachikan Just noticed that someone categorized this as belonging to the genre
-                                        "demons" LOL
-                                   </p>
-                              </div>
-                         </div>
-                         <div class="anime__review__item">
-                              <div class="anime__review__item__pic">
-                                   <img src="~/Content/img/anime/review-2.jpg" alt="">
-                              </div>
-                              <div class="anime__review__item__text">
-                                   <h6>Lewis Mann - <span>5 Hour ago</span></h6>
-                                   <p>Finally it came out ages ago</p>
-                              </div>
-                         </div>
-                         <div class="anime__review__item">
-                              <div class="anime__review__item__pic">
-                                   <img src="~/Content/img/anime/review-3.jpg" alt="">
-                              </div>
-                              <div class="anime__review__item__text">
-                                   <h6>Louis Tyler - <span>20 Hour ago</span></h6>
-                                   <p>Where is the episode 15 ? Slow update! Tch</p>
-                              </div>
-                         </div>
-                         <div class="anime__review__item">
-                              <div class="anime__review__item__pic">
-                                   <img src="~/Content/img/anime/review-4.jpg" alt="">
-                              </div>
-                              <div class="anime__review__item__text">
-                                   <h6>Chris Curry - <span>1 Hour ago</span></h6>
-                                   <p>
-                                        whachikan Just noticed that someone categorized this as belonging to the genre
-                                        "demons" LOL
-                                   </p>
-                              </div>
-                         </div>
-                         <div class="anime__review__item">
-                              <div class="anime__review__item__pic">
-                                   <img src="~/Content/img/anime/review-5.jpg" alt="">
-                              </div>
-                              <div class="anime__review__item__text">
-                                   <h6>Lewis Mann - <span>5 Hour ago</span></h6>
-                                   <p>Finally it came out ages ago</p>
-                              </div>
-                         </div>
-                         <div class="anime__review__item">
-                              <div class="anime__review__item__pic">
-                                   <img src="~/Content/img/anime/review-6.jpg" alt="">
-                              </div>
-                              <div class="anime__review__item__text">
-                                   <h6>Louis Tyler - <span>20 Hour ago</span></h6>
-                                   <p>Where is the episode 15 ? Slow update! Tch</p>
-                              </div>
-                         </div>
-                    </div>
+                   <div class="anime__details__review">
+                       <div class="section-title">
+                           <h5>Reviews</h5>
+                       </div>
+                       @if (Model == null || !Model.Comment.Any())
+                       {
+                           <p>No comment available. Please check back later.</p>
+                       }
+                       else
+                       {
+                           int count = Model.Comment.Count < 6 ? Model.Comment.Count : 6;
+
+                           for (int i = 0; i < count; i++)
+                           {
+                               var comment = Model.Comment[i];
+                               if (comment.Anime_Id == Model.AnimeDetail.Anime_Id)
+                               {
+                                   var user = Model.Users.FirstOrDefault(u => u.Id == comment.User_id);
+                                   <div class="anime__review__item">
+                                       <div class="anime__review__item__pic">
+                                           <img src="Content/img/anime/review-6.jpg" alt="">
+                                       </div>
+                                       <div class="anime__review__item__text">
+                                           <h6>@user.Username<span>@comment.Comment_Date</span></h6>
+                                           <p>@comment.Content</p>
+                                       </div>
+                                   </div>
+                               }
+                           }
+                       }
+                   </div>
                     <div class="anime__details__form">
-                         <div class="section-title">
-                              <h5>Your Comment</h5>
-                         </div>
-                         <form action="#">
-                              <textarea placeholder="Your Comment"></textarea>
-                              <button type="submit"><i class="fa fa-location-arrow"></i> Review</button>
-                         </form>
+                        <div class="section-title">
+                            <h5>Your Comment</h5>
+                        </div>
+                        @using (Html.BeginForm("AddComment", "Anime_Watching", new { animeId = Model.AnimeDetail.Anime_Id }))
+                        {
+                            <textarea name="content" placeholder="Your Comment"></textarea>
+                            <input type="hidden" name="userId" value="@Model.User.User_Id" /> <!-- Assuming userId is hardcoded here -->
+                            <button type="submit">Add Comment</button>
+                        }
                     </div>
                </div>
           </div>

@@ -1,6 +1,9 @@
 ﻿using FlixZone.BusinessLogic;
 using FlixZone.BusinessLogic.Interface;
 using FlixZone.Domain.Entities.Anime;
+using FlixZone.Domain.Entities.User.DBModel;
+using FlixZone.Domain.Entities.User;
+using FlixZone.Web.Extension;
 using FlixZone.Web.Models;
 using System;
 using System.Collections.Generic;
@@ -13,11 +16,13 @@ namespace FlixZone.Web.Controllers.NavControllers
     public class Anime_WatchingController : BaseController
     {
         private readonly IAnime _anime;
+        private readonly ISession _session;
 
         public Anime_WatchingController()
         {
             var bl = new BussinesLogic();
             _anime = bl.GetAnimeBL();
+            _session = bl.GetSessionBL();
         }
 
         // GET: Anime_Watchig
@@ -28,9 +33,29 @@ namespace FlixZone.Web.Controllers.NavControllers
             {
                 return RedirectToAction("Index", "Login");
             }
+            
+            //??????????????????????????
+            /*_anime.Increment(id);*/
+
+            var user = System.Web.HttpContext.Current.GetMySessionObject();
+            UserData u = new UserData
+            {
+                Username = user.Username,
+                User_Id = user.Id,
+            };
+
+            var users = _session.GetUsers();
+
+            var usersList = users.Select(a => new UserLogin
+            {
+                Id = a.Id,
+                Username = a.Username,
+
+            }).ToList();
+
             var animeById = _anime.GetAnimeById(id);
 
-            var animeListView = new AnimeData
+            var animeByIdView = new AnimeData
             {
                 Anime_Id = animeById.Anime_Id,
                 Anime_Name = animeById.Anime_Name,
@@ -44,10 +69,58 @@ namespace FlixZone.Web.Controllers.NavControllers
                 Anime_Views = animeById.Anime_Views,
                 Anime_Comment = animeById.Anime_Comment,
                 Anime_Image = animeById.Anime_Image,
-                Anime_Video = animeById.Anime_Video
+                Anime_Poster = animeById.Anime_Poster,
+                Anime_Video = animeById.Anime_Video,
             };
 
-            return View(animeListView);
+            var animeList = _anime.GetAnimeLists();
+
+            var animeListView = animeList.Select(a => new AnimeData
+            {
+                Anime_Id = a.Anime_Id,
+                Anime_Name = a.Anime_Name,
+                Anime_Author = a.Anime_Author,
+                Anime_Description = a.Anime_Description,
+                Anime_Type = a.Anime_Type,
+                Anime_Studios = a.Anime_Studios,
+                Anime_Date = a.Anime_Date,
+                Anime_Status = a.Anime_Status,
+                Anime_Genre = a.Anime_Genre,
+                Anime_Views = a.Anime_Views,
+                Anime_Comment = a.Anime_Comment,
+                Anime_Image = a.Anime_Image,
+                Anime_Poster = a.Anime_Poster,
+                Anime_Video = a.Anime_Video,
+            }).ToList();
+
+            var commentList = _anime.GetAnimeComments();
+
+            var animeCommentList = commentList.Select(a => new Comments
+            {
+                Comment_Id = a.Comment_Id,
+                Content = a.Content,
+                Comment_Date = a.Comment_Date,
+                Anime_Id = a.Anime_Id,
+                User_id = a.User_id
+            }).ToList();
+
+            var model = new CombinedModel
+            {
+                AnimeDetail = animeByIdView,
+                AnimeList = animeListView,
+                User = u,
+                Users = usersList,
+                Comment = animeCommentList,
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult AddComment(int animeId, string content, int userId)
+        {
+            _anime.AddComment(animeId, content, userId);
+            return RedirectToAction("Index", new { id = animeId });
         }
     }
 }

@@ -52,6 +52,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Anime\AnimeList.cs" />
+    <Compile Include="Entities\Anime\Comment.cs" />
+    <Compile Include="Entities\Anime\Reviews.cs" />
     <Compile Include="Entities\Responce\ULoginResp.cs" />
     <Compile Include="Entities\User\DBModel\Session.cs" />
     <Compile Include="Entities\User\ULoginData.cs" />

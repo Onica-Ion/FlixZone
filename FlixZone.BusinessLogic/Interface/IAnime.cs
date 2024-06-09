@@ -11,5 +11,9 @@ namespace FlixZone.BusinessLogic.Interface
     {
         List<AnimeList> GetAnimeLists();
         AnimeList GetAnimeById(int userId);
+        Comment AddComment(int animeId, string content, int userId);
+        List<Comment> GetAnimeComments();
+        List<Reviews> GetReviewList();
+        bool Increment(int id);
     }
 }

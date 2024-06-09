@@ -39,14 +39,20 @@ namespace FlixZone.Domain.Entities.Anime
         public int Anime_Views { get; set; }
 
         public int Anime_Comment { get; set; }
-        /* public int Comment_Id { get; set; }*/
 
         [Required]
-        public string Anime_Image { get; set; }
+        public string Anime_Poster { get; set; }
+
+        [Required]
+        public string Anime_Image { get; set; } 
 
         [Required]
         public string Anime_Video { get; set; }
 
+        // Relația cu Comment
+        public virtual ICollection<Comment> Comments { get; set; }
 
+        // Relația cu Review
+        public virtual ICollection<Reviews> Reviews { get; set; }
     }
 }

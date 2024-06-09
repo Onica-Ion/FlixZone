@@ -14,5 +14,6 @@ namespace FlixZone.BusinessLogic.Interface
         ULoginResp UserLogin(ULoginData data);
         HttpCookie GenCookie(string loginCredential);
         UserMinimal GetUserByCookie(string apiCookieValue);
+        List<UserLogin> GetUsers();
     }
 }

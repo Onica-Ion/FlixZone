@@ -142,6 +142,7 @@
     <Content Include="Content\img\anime\review-4.jpg" />
     <Content Include="Content\img\anime\review-5.jpg" />
     <Content Include="Content\img\anime\review-6.jpg" />
+    <Content Include="Content\img\anime_image\Kimetsu no Yaiba.jpg" />
     <Content Include="Content\img\blog\blog-1.jpg" />
     <Content Include="Content\img\blog\blog-10.jpg" />
     <Content Include="Content\img\blog\blog-11.jpg" />
@@ -179,6 +180,7 @@
     <Content Include="Content\img\popular\popular-4.jpg" />
     <Content Include="Content\img\popular\popular-5.jpg" />
     <Content Include="Content\img\popular\popular-6.jpg" />
+    <Content Include="Content\img\poster\Kimetsu-no-Yaiba.jpg" />
     <Content Include="Content\img\recent\recent-1.jpg" />
     <Content Include="Content\img\recent\recent-2.jpg" />
     <Content Include="Content\img\recent\recent-3.jpg" />
@@ -279,15 +281,16 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AnimeData.cs" />
-    <Compile Include="Models\List\AnimeLists.cs" />
+    <Compile Include="Models\CombinedModel.cs" />
+    <Compile Include="Models\Comments.cs" />
     <Compile Include="Models\List\AnimeProduct.cs" />
-    <Compile Include="Models\List\CombinedModel.cs" />
     <Compile Include="Models\List\LiveList.cs" />
     <Compile Include="Models\List\NewCommentList.cs" />
     <Compile Include="Models\List\PopularList.cs" />
     <Compile Include="Models\List\RecentList.cs" />
     <Compile Include="Models\List\TopViewList.cs" />
     <Compile Include="Models\List\TrendingList.cs" />
+    <Compile Include="Models\Review.cs" />
     <Compile Include="Models\UserData.cs" />
     <Compile Include="Models\ULogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

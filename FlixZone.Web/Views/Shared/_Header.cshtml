@@ -37,21 +37,24 @@
                     </div>
                </div>
                <div class="col-lg-2">
-                    <div class="header__right">
-                         <a href="#" class="search-switch"><span class="icon_search"></span></a>
+                   <div class="header__right">
+                       <a href="#" class="search-switch"><span class="icon_search"></span></a>
 
-                        @{ 
-                            <!--if ((string)System.Web.HttpContext.Current.Session["LoginStatus"] == "login")
-                            {
-                            <span>-->@*@Html.DisplayFor(u => u.Username)*@<!--</span>
-                            }
-                            else--> 
-                            { 
-                                <a href="@Url.Action("Index","Login")"><span class="icon_profile"></span></a>
-                            }
-                        }
+                       @{
+                           if ((string)System.Web.HttpContext.Current.Session["LoginStatus"] == "login")
+                           {
+                               <span style="color: red">@Session["Username"]</span>
+                           }
+                           else
+                           {
+                               <a href="@Url.Action("Index","Login")"><span class="icon_profile"></span></a>
+                           }
+                       }
 
-                    </div>
+                       @*@Html.DisplayFor(u => u.Username)*@
+
+
+                   </div>
                </div>
           </div>
           <div id="mobile-menu-wrap"></div>

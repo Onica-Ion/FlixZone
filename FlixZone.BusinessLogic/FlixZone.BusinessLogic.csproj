@@ -63,9 +63,9 @@
     <Compile Include="DBContext\UserContext.cs" />
     <Compile Include="Interface\IAnime.cs" />
     <Compile Include="Interface\ISession.cs" />
-    <Compile Include="Migrations\202406012023250_MyFirstMigration.cs" />
-    <Compile Include="Migrations\202406012023250_MyFirstMigration.Designer.cs">
-      <DependentUpon>202406012023250_MyFirstMigration.cs</DependentUpon>
+    <Compile Include="Migrations\202406091155168_myMigration.cs" />
+    <Compile Include="Migrations\202406091155168_myMigration.Designer.cs">
+      <DependentUpon>202406091155168_myMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -86,8 +86,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202406012023250_MyFirstMigration.resx">
-      <DependentUpon>202406012023250_MyFirstMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202406091155168_myMigration.resx">
+      <DependentUpon>202406091155168_myMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
