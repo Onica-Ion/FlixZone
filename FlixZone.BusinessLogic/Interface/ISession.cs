@@ -1,5 +1,6 @@
 ﻿using FlixZone.Domain.Entities.Responce;
 using FlixZone.Domain.Entities.User;
+using FlixZone.Domain.Entities.User.Register;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +16,6 @@ namespace FlixZone.BusinessLogic.Interface
         HttpCookie GenCookie(string loginCredential);
         UserMinimal GetUserByCookie(string apiCookieValue);
         List<UserLogin> GetUsers();
+        ULoginResp UserRegister(URegisterData data);
     }
 }

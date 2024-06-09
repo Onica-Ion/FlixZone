@@ -291,6 +291,7 @@
     <Compile Include="Models\List\TopViewList.cs" />
     <Compile Include="Models\List\TrendingList.cs" />
     <Compile Include="Models\Review.cs" />
+    <Compile Include="Models\URegister.cs" />
     <Compile Include="Models\UserData.cs" />
     <Compile Include="Models\ULogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -47,11 +47,10 @@
                         }
                         else
                         {
-                            int count = Model.Count < 6 ? Model.Count : 6;
+                            int displayedCount = 0;
 
-                            for (int i = 0; i < count; i++)
+                            foreach (var anime in Model)
                             {
-                                var anime = Model[i];
                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                     <div class="product__item">
                                         <div class="product__item__pic set-bg" data-setbg="@anime.Anime_Poster">
@@ -68,6 +67,12 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                if (displayedCount >= 6)
+                                {
+                                    // Dacă s-au afișat deja 6 comentarii, ieșiți din buclă
+                                    break;
+                                }
                             }
                         }
                     </div>
@@ -100,17 +105,22 @@
                             }
                             else
                             {
-                                int count = Model.Count < 5 ? Model.Count : 5;
+                                int displayedCount = 0;
 
-                                for (int i = 0; i < count; i++)
+                                foreach (var anime in Model)
                                 {
-                                    var anime = Model[i];
                                     <div class="product__sidebar__view__item set-bg mix day years"
                                          data-setbg="@anime.Anime_Poster">
                                         <div class="ep">@anime.Anime_Comment</div>
                                         <div class="view"><i class="fa fa-eye"></i> @anime.Anime_Views</div>
                                         <h5><a href="@Url.Action("Index","Anime_Details", new {id = anime.Anime_Id})">@anime.Anime_Name</a></h5>
                                     </div>
+
+                                    if (displayedCount >= 5)
+                                    {
+                                        // Dacă s-au afișat deja 6 comentarii, ieșiți din buclă
+                                        break;
+                                    }
                                 }
                             }
                         </div>
@@ -125,11 +135,10 @@
                         }
                         else
                         {
-                            int count = Model.Count < 4 ? Model.Count : 4;
+                            int displayedCount = 0;
 
-                            for (int i = 0; i < count; i++)
+                            foreach (var anime in Model)
                             {
-                                var anime = Model[i];
                                 <div class="product__sidebar__comment__item">
                                     <div class="product__sidebar__comment__item__pic">
                                         <img src="@anime.Anime_Image" alt="">
@@ -144,6 +153,12 @@
                                         <span><i class="fa fa-eye"></i>@anime.Anime_Views Viewes</span>
                                     </div>
                                 </div>
+
+                                if (displayedCount >= 4)
+                                {
+                                    // Dacă s-au afișat deja 6 comentarii, ieșiți din buclă
+                                    break;
+                                }
                             }
                         }
                     </div>

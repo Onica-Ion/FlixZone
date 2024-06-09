@@ -3,6 +3,7 @@ using FlixZone.Domain.Entities.Anime;
 using FlixZone.Domain.Entities.Responce;
 using FlixZone.Domain.Entities.User;
 using FlixZone.Domain.Entities.User.DBModel;
+using FlixZone.Domain.Entities.User.Register;
 using FlixZone.Helpers;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,49 @@ namespace FlixZone.BusinessLogic.Core
 {
     public class UserApi
     {
+        internal ULoginResp UserRegisterAction(URegisterData data)
+        {
+            UserLogin user;
+            var validate = new EmailAddressAttribute();
+            if (validate.IsValid(data.Email))
+            {
+                //var pass = LoginHelper.HashGen(data.Password);
+                using (var db = new UserContext())
+                {
+                    user = db.Users.FirstOrDefault(u => u.Email == data.Email);
+                }
+                if (user != null)
+                {
+                    return new ULoginResp { Status = false, StatusMsg = "This user already exists" };
+                }
+                var newUser = new UserLogin()
+                {
+                    Email = data.Email,
+                    Username = data.Username,
+                    Password = data.Password,
+                    LastLogin = data.LastLogin,
+                    Level = URole.User,
+
+                };
+
+                using (var todo = new UserContext())
+                {
+                    /*user.Email = data.Email;
+                    user.Username = data.Username;
+                    user.Password = data.Password;
+                    user.LastLogin = data.LastLogin;
+                    user.Level = URole.User;*/
+                    todo.Users.Add(newUser);
+                    todo.SaveChanges();
+                }
+                return new ULoginResp { Status = true };
+
+            }
+            else
+            {
+                return new ULoginResp { Status = false, StatusMsg = "Email is not valid" };
+            }
+        }
         internal List<UserLogin> GetUsersFromDb()
         {
             var user = new List<UserLogin>();

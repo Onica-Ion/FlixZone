@@ -69,11 +69,10 @@
                        }
                        else
                        {
-                           int count = Model.Comment.Count < 6 ? Model.Comment.Count : 6;
+                           int displayedCount = 0;
 
-                           for (int i = 0; i < count; i++)
+                           foreach (var comment in Model.Comment)
                            {
-                               var comment = Model.Comment[i];
                                if (comment.Anime_Id == Model.AnimeDetail.Anime_Id)
                                {
                                    var user = Model.Users.FirstOrDefault(u => u.Id == comment.User_id);
@@ -86,6 +85,12 @@
                                            <p>@comment.Content</p>
                                        </div>
                                    </div>
+
+                                   if (displayedCount >= 6)
+                                   {
+                                       // Dacă s-au afișat deja 6 comentarii, ieșiți din buclă
+                                       break;
+                                   }
                                }
                            }
                        }

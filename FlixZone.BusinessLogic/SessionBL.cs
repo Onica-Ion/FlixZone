@@ -2,6 +2,7 @@
 using FlixZone.BusinessLogic.Interface;
 using FlixZone.Domain.Entities.Responce;
 using FlixZone.Domain.Entities.User;
+using FlixZone.Domain.Entities.User.Register;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,11 @@ namespace FlixZone.BusinessLogic
         public List<UserLogin> GetUsers()
         {
             return GetUsersFromDb();
+        }
+
+        public ULoginResp UserRegister(URegisterData data)
+        {
+            return UserRegisterAction(data);
         }
     }
 }

@@ -56,6 +56,7 @@
     <Compile Include="Entities\Anime\Reviews.cs" />
     <Compile Include="Entities\Responce\ULoginResp.cs" />
     <Compile Include="Entities\User\DBModel\Session.cs" />
+    <Compile Include="Entities\User\Register\URegisterData.cs" />
     <Compile Include="Entities\User\ULoginData.cs" />
     <Compile Include="Entities\User\URole.cs" />
     <Compile Include="Entities\User\UserLogin.cs" />
