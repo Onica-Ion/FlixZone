@@ -79,6 +79,9 @@ namespace FlixZone.Web.Controllers.NavControllers
 
             var animeListView = animeList.Select(a => new AnimeData
             {
+
+
+
                 Anime_Id = a.Anime_Id,
                 Anime_Name = a.Anime_Name,
                 Anime_Author = a.Anime_Author,
